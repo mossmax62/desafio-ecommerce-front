@@ -4,19 +4,19 @@ const SingUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-        //await auth.createUserWithEmailAndPassword(email, password);
-        console.log("Signed Up");
-        console.log(email);
-        console.log(password);
+            //await auth.createUserWithEmailAndPassword(email, password);
+            console.log("Signed Up");
+            console.log(email);
+            console.log(password);
         } catch (error) {
-        setError(error.message);
+            setError(error.message);
         }
     };
-    
+
     return (
         <div className="container">
             <div>
@@ -44,5 +44,5 @@ const SingUp = () => {
             </div>
         </div>
     );
-    }
+}
 export default SingUp;

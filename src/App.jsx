@@ -6,6 +6,8 @@ import './main.css'
 import SingIn from './views/SingIn';
 import SingUp from './views/SingUp';
 import Home from './views/Home';
+import ShoppingCart from './views/ShoppingCart';
+import Notifications from './views/Notifications';
 
 function App() {
   
@@ -17,6 +19,14 @@ function App() {
     <Route
     path="/"
     element={<Home />}
+    />
+    <Route
+    path="/shopping-cart"
+    element={<ShoppingCart />}
+    />
+    <Route
+    path="/notifications"
+    element={<Notifications />}
     />
     <Route
     path="/sign-in"
