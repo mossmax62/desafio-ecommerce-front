@@ -1,22 +1,33 @@
 import { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
 
 const SingIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    
+    const navigate = useNavigate();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-        //await auth.signInWithEmailAndPassword(email, password);
-        console.log('Signed In');
-        console.log(email);
-        console.log(password);
+            //await auth.signInWithEmailAndPassword(email, password);
+
+            console.log('Signed In');
+            console.log(email);
+            console.log(password);
+            login();
+            navigate('/user-profile');
         } catch (error) {
-        setError(error.message);
+            setError(error.message);
         }
     };
-    
+
+
+    const { login } = useAuth();
+
+
     return (
         <div className="container">
             <div>
@@ -44,5 +55,5 @@ const SingIn = () => {
             </div>
         </div>
     );
-    }
+}
 export default SingIn;
