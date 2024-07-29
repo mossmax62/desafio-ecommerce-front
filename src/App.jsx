@@ -10,6 +10,7 @@ import Home from './views/Home';
 import ShoppingCart from './views/ShoppingCart';
 import Notifications from './views/Notifications';
 import UserProfile from './views/UserProfile';
+import ManageProductsView from './views/ManageProductsView';
 
 function App() {
 
@@ -38,7 +39,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-
+        <Route
+          path='/manage-products'
+          element={
+            <ProtectedRoute>
+              <ManageProductsView />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/notifications"
           element={<Notifications />}

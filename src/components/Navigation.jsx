@@ -4,17 +4,21 @@ import NotificationBell from './NotificationBell';
 import CartIcon from './CartIcon';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+
 
 const Navigation = () => {
     const { isAuthenticated, logout } = useAuth();
     const navigate = useNavigate();
 
+    const { cart } = useCart();
 
     const handleLogout = () => {
         console.log('Logout');
         logout();
         navigate('/');
     }
+
 
     return (
         <>
@@ -27,7 +31,7 @@ const Navigation = () => {
                             navbarScroll>
                             <Link to="/" className="nav-link btn btn-warning m-1">Inicio</Link>
                             <Link to="/notifications" className="nav-link btn btn-warning m-1"><NotificationBell count={3} /> </Link>
-                            <Link to="/shopping-cart" className="nav-link btn btn-warning m-1"><CartIcon itemCount={2} /></Link>
+                            <Link to="/shopping-cart" className="nav-link btn btn-warning m-1"><CartIcon itemCount={cart.length} /></Link>
 
                             {!isAuthenticated ?
                                 <NavDropdown title="Acceso" id="basic-nav-dropdown" className="nav-link btn btn-warning m-1 p-1">
@@ -43,6 +47,9 @@ const Navigation = () => {
                                 <NavDropdown title="Mi cuenta" id="basic-nav-dropdown" className="nav-link btn btn-warning m-1 p-1">
                                     <NavDropdown.Item href='/user-profile' className="nav-link btn btn-warning" >
                                         Profile
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item href='/manage-products' className="nav-link btn btn-warning" >
+                                        Manage Products
                                     </NavDropdown.Item>
 
                                     <NavDropdown.Item onClick={handleLogout} className="nav-link btn btn-warning" >
