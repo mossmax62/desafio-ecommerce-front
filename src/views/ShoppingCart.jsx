@@ -13,13 +13,13 @@ const ShoppingCart = () => {
                     {cart.map(product => (
                         <li key={product.id}>
                             {product.name} - {product.price}
-                            <button onClick={() => removeFromCart(product.id)}>Remove</button>
+                            <button onClick={() => removeFromCart(product.id)} className='btn btn-danger'>Remove</button>
                         </li>
                     ))}
                 </ul>
             </div>
             <div>
-                <button onClick={clearCart}>Clear Cart</button>
+                <button onClick={clearCart} className='btn btn-danger'>Clear Cart</button>
 
             </div>
         </div>

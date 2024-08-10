@@ -17,8 +17,8 @@ const ManageProduct = ({ onEditProduct }) => {
                 {products.map(product => (
                     <li key={product.id}>
                         {product.name} - {product.price}
-                        <button onClick={() => onEditProduct(product)}>Edit</button>
-                        <button onClick={() => deleteProduct(product.id)}>Delete</button>
+                        <button onClick={() => onEditProduct(product)} className='btn btn-primary'>Edit</button>
+                        <button onClick={() => deleteProduct(product.id)} className='btn btn-danger'>Delete</button>
                     </li>
                 ))}
             </ul>

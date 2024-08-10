@@ -29,7 +29,7 @@ const AddProduct = () => {
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
             />
-            <button type="submit">Add</button>
+            <button className='btn btn-primary' type="submit">Add</button>
         </form>
     );
 };

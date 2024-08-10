@@ -1,1 +1,29 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0c1e28;
+    color: white;
+}
+
+.rain-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.raindrop {
+    position: absolute;
+    bottom: 100%;
+    width: 2px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
