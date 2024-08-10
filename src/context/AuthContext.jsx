@@ -13,6 +13,7 @@ export function AuthProvider({ children }) {
         children: PropTypes.node.isRequired,
     };
 
+
     const [isAuthenticated, setIsAuthenticated] = useState(() => {
         const savedAuthState = localStorage.getItem('isAuthenticated');
         return savedAuthState ? JSON.parse(savedAuthState) : false;

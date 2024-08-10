@@ -1,14 +1,12 @@
 // src/components/ProductList.jsx
 //import React from 'react';
 import { useProducts } from '../../context/ProductContext';
-import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 
 
 
 const ProductList = () => {
-    const { products, deleteProduct } = useProducts();
-    const { isAuthenticated } = useAuth();
+    const { products } = useProducts();
     const { addToCart, removeFromCart } = useCart();
 
     return (
@@ -18,9 +16,6 @@ const ProductList = () => {
                 {products.map(product => (
                     <li key={product.id}>
                         {product.name} - {product.price}
-                        {isAuthenticated && (
-                            <button onClick={() => deleteProduct(product.id)}>Delete</button>
-                        )}
                         <button onClick={() => addToCart(product)}>Add to Cart</button>
                         <button onClick={() => removeFromCart(product.id)}>Remove from Cart</button>
                     </li>

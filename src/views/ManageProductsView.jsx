@@ -1,3 +1,4 @@
+// src/views/ManageProductsView.jsx
 import ManageProduct from "../components/products/ManageProduct";
 import AddProduct from "../components/products/AddProduct";
 import EditProduct from "../components/products/EditProduct";
@@ -19,7 +20,8 @@ const ManageProductView = () => {
             <h1>Manage Products</h1>
             <ManageProduct onEditProduct={handleEditProduct} />
             <AddProduct />
-            <EditProduct productToEdit={productToEdit} onEditComplete={handleEditComplete} />
+            {/* Render EditProduct only when productToEdit is not null */}
+            {productToEdit && <EditProduct productToEdit={productToEdit} onEditComplete={handleEditComplete} />}
         </div>
     );
 }

@@ -31,8 +31,10 @@ const ProductContextProvider = ({ children }) => {
         setProducts([...products, product]);
     };
 
-    const updateProduct = (id, updatedProduct) => {
-        setProducts(products.map((product) => (product.id === id ? updatedProduct : product)));
+    const updateProduct = (updatedProduct) => {
+
+        console.log(updatedProduct);
+        setProducts(products.map((product) => (product.id === updateProduct.id ? updatedProduct : product)));
     };
 
     const deleteProduct = (id) => {

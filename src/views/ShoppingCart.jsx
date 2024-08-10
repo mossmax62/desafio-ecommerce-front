@@ -4,7 +4,7 @@ import { useCart } from "../context/CartContext";
 
 const ShoppingCart = () => {
 
-    const { cart } = useCart();
+    const { cart, clearCart } = useCart();
     return (
         <div className="container">
             <div>
@@ -16,6 +16,10 @@ const ShoppingCart = () => {
                         </li>
                     ))}
                 </ul>
+            </div>
+            <div>
+                <button onClick={clearCart}>Clear Cart</button>
+
             </div>
         </div>
     );

@@ -24,7 +24,12 @@ const EditProduct = ({ productToEdit, onEditComplete }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        updateProduct({ ...productToEdit, name, price });
+        console.log(productToEdit);
+        console.log(name);
+        console.log(price);
+        productToEdit.name = name;
+        productToEdit.price = price;
+        updateProduct(productToEdit);
         onEditComplete();
     };
 
