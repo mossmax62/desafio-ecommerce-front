@@ -7,7 +7,7 @@ import { useCart } from '../../context/CartContext';
 
 const ProductList = () => {
     const { products } = useProducts();
-    const { addToCart, removeFromCart } = useCart();
+    const { addToCart } = useCart();
 
     return (
         <div>
@@ -17,7 +17,6 @@ const ProductList = () => {
                     <li key={product.id}>
                         {product.name} - {product.price}
                         <button onClick={() => addToCart(product)}>Add to Cart</button>
-                        <button onClick={() => removeFromCart(product.id)}>Remove from Cart</button>
                     </li>
                 ))}
             </ul>
