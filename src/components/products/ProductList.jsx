@@ -13,17 +13,18 @@ const ProductList = () => {
         <>
             <div>
                 <h2>Product List</h2>
-                <ul>
-                    {products.map(product => (
-                        <><li key={product.id}>
-                            {product.name} - {product.price}
-                            &nbsp;
-                            <button onClick={() => addToCart(product)} className='btn btn-primary'>Add to Cart</button>
-                        </li><br /></>
-                    ))}
-                </ul>
-
-            </div>
+                <div className='container'>
+                    <div className='row'>
+                        {products.map(product => (
+                            <><div key={product.id} className='col-sm-4 card m-2 text-center'>
+                                {product.name} - {product.price}
+                                &nbsp;
+                                <button onClick={() => addToCart(product)} className='btn btn-primary'>Add to Cart</button>
+                            </div > <br /></>
+                        ))}
+                    </div>
+                </div>
+            </div >
         </>
     );
 };

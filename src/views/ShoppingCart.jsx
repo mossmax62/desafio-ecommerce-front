@@ -9,14 +9,15 @@ const ShoppingCart = () => {
         <div className="container">
             <div>
                 <h1>Shopping Cart</h1>
-                <ul>
+                <div className="container">
                     {cart.map(product => (
-                        <li key={product.id}>
+                        <div key={product.id} className="card">
                             {product.name} - {product.price}
                             <button onClick={() => removeFromCart(product.id)} className='btn btn-danger'>Remove</button>
-                        </li>
+                        </div>
                     ))}
-                </ul>
+                    <br />
+                </div>
             </div>
             <div>
                 <button onClick={clearCart} className='btn btn-danger'>Clear Cart</button>
