@@ -1,4 +1,5 @@
-import ProductList from "../components/Products/ProductList";
+import ProductList from "../components/products/ProductList";
+
 
 const Home = () => {
     return (

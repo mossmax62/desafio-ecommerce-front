@@ -6,18 +6,16 @@ import './ProductList.css'
 
 const ProductList = () => {
     const { products } = useProducts();
-    console.log(products);
     const { addToCart } = useCart();
 
     return (
         <>
             <div>
-                <h2>Product List</h2>
                 <div className='container'>
                     <div className='product-list'>
                         <div className='row'>
                             {products.map(product => (
-                                <><div key={product.id} className='col-sm-2 card m-2 text-center'>
+                                <><div key={product.id} className='col-sm-2 card m-2 p-1 text-center'>
 
                                     <div className='card-title'>
                                         <h3>{product.make}</h3>
