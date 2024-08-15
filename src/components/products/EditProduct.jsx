@@ -1,6 +1,6 @@
 // src/components/products/EditProduct.jsx
 import { useState, useEffect } from 'react';
-import { useProducts } from '../../context/ProductContext';
+import { useProducts } from '../../contexts/ProductContext';
 import PropTypes from 'prop-types';
 
 const EditProduct = ({ productToEdit, onEditComplete }) => {

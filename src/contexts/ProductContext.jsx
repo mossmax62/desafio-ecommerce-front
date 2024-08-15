@@ -1,7 +1,10 @@
 import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import responseCars from '../assets/cars.json'
 
 export const ProductContext = createContext();
+const cars = responseCars;
+
 
 const ProductContextProvider = ({ children }) => {
     ProductContextProvider.propTypes = {
@@ -9,11 +12,12 @@ const ProductContextProvider = ({ children }) => {
     };
     const [products, setProducts] = useState(() => {
         const storedProducts = localStorage.getItem('products');
-        return storedProducts ? JSON.parse(storedProducts) : [];
+        return storedProducts ? JSON.parse(storedProducts) : cars;
     });
 
     useEffect(() => {
         // Load products from localStorage on component mount
+        console.log(cars);
         const storedProducts = localStorage.getItem('products');
         if (storedProducts) {
             setProducts(JSON.parse(storedProducts));

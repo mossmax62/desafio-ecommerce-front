@@ -1,7 +1,7 @@
 // src/views/ManageProductsView.jsx
-import ManageProduct from "../components/products/ManageProduct";
-import AddProduct from "../components/products/AddProduct";
-import EditProduct from "../components/products/EditProduct";
+import ManageProduct from "../components/Products/ManageProduct";
+import AddProduct from "../components/Products/AddProduct";
+import EditProduct from "../components/Products/EditProduct";
 import { useState } from "react";
 
 
@@ -16,7 +16,7 @@ const ManageProductView = () => {
         setProductToEdit(null);
     };
     return (
-        <div>
+        <div className="container">
             <h1>Manage Products</h1>
             <ManageProduct onEditProduct={handleEditProduct} />
             <AddProduct />

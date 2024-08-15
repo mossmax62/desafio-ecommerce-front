@@ -1,16 +1,16 @@
 import { Routes, Route } from 'react-router-dom'
-import Navigation from './components/Navigation'
-import ProtectedRoute from './components/ProtectedRoute' // Import the ProtectedRoute component
+import Navigation from './components/Layout/Navigation'
+import ProtectedRoute from './components/Auth/ProtectedRoute' // Import the ProtectedRoute component
 
 
 import './main.css'
-import SingIn from './views/SingIn';
-import SingUp from './views/SingUp';
-import Home from './views/Home';
-import ShoppingCart from './views/ShoppingCart';
-import Notifications from './views/Notifications';
-import UserProfile from './views/UserProfile';
-import ManageProductsView from './views/ManageProductsView';
+import SingIn from './components/Auth/SingIn';
+import SingUp from './components/Auth/SingUp';
+import Home from './pages/Home';
+import ShoppingCart from './components/Cart/ShoppingCart';
+import Notifications from './pages/Notifications';
+import UserProfile from './pages/UserProfile';
+import ManageProductsView from './pages/ManageProducts';
 
 function App() {
 

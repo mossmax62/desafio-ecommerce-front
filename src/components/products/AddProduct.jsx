@@ -1,6 +1,6 @@
 // src/components/AddProduct.jsx
 import { useState } from 'react';
-import { useProducts } from '../../context/ProductContext';
+import { useProducts } from '../../contexts/ProductContext';
 
 const AddProduct = () => {
     const { addProduct } = useProducts();
@@ -9,7 +9,7 @@ const AddProduct = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addProduct({ id: Date.now(), name, price });
+        addProduct({ id: Math.random(), name, price });
         setName('');
         setPrice('');
     };

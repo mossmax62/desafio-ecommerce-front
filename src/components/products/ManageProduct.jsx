@@ -1,5 +1,5 @@
 // src/components/products/ManageProduct.jsx
-import { useProducts } from '../../context/ProductContext';
+import { useProducts } from '../../contexts/ProductContext';
 import PropTypes from 'prop-types';
 
 

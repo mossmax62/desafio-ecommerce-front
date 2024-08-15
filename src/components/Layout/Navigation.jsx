@@ -2,9 +2,9 @@ import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import NotificationBell from './NotificationBell';
 import CartIcon from './CartIcon';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { useCart } from '../context/CartContext';
+import { useCart } from '../../contexts/CartContext';
 
 
 const Navigation = () => {
