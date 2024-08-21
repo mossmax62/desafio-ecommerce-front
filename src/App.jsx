@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom'
-import Navigation from './components/Layout/Navigation'
-import ProtectedRoute from './components/Auth/ProtectedRoute' // Import the ProtectedRoute component
+import Navigation from './components/layout/Navigation';
+import ProtectedRoute from './components/auth/ProtectedRoute' // Import the ProtectedRoute component
 
 
 import './main.css'
-import SingIn from './components/Auth/SingIn';
-import SingUp from './components/Auth/SingUp';
+import SingIn from './components/auth/SingIn';
+import SingUp from './components/auth/SingUp';
 import Home from './pages/Home';
-import ShoppingCart from './components/Cart/ShoppingCart';
+import ShoppingCart from './components/cart/ShoppingCart';
 import Notifications from './pages/Notifications';
 import UserProfile from './pages/UserProfile';
 import ManageProductsView from './pages/ManageProducts';
