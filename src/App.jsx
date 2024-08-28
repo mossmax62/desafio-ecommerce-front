@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import Navigation from './components/layout/Navigation';
+import Navigation from './components/menu/Navigation';
 import ProtectedRoute from './components/auth/ProtectedRoute' // Import the ProtectedRoute component
 
 
