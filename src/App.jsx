@@ -11,7 +11,7 @@ import Notifications from './pages/Notifications'
 import UserProfile from './pages/UserProfile'
 import ManageProductsView from './pages/ManageProducts'
 
-function App() {
+function App () {
   return (
     <div>
       <Navigation />
