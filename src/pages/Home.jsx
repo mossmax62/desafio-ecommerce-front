@@ -1,19 +1,17 @@
-import ProductList from "../components/products/ProductList";
-
+import ProductList from '../components/products/ProductList'
 
 const Home = () => {
-    return (
-        <>
-            <div className="container">
+  return (
+    <>
+      <div className='container'>
 
-                <h1>Welcome to the Home page</h1>
+        <h1>Welcome to the Home page</h1>
 
-                <ProductList />
+        <ProductList />
 
+      </div>
 
-            </div>
-
-        </>
-    );
+    </>
+  )
 }
-export default Home;
+export default Home
