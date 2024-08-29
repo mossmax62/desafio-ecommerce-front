@@ -1,10 +1,16 @@
 import { useProducts } from '../../contexts/ProductContext'
 import { useCart } from '../../contexts/CartContext'
+import IconHeart from '../fav/IconHeart'
 import './ProductList.css'
 
 const ProductList = () => {
-  const { products } = useProducts()
+  const { products, toggleLike, isLiked } = useProducts()
   const { addToCart } = useCart()
+
+  // Función para manejar el like y dislike
+  const handleLike = (productId) => {
+    toggleLike(productId)
+  }
 
   return (
     <>
@@ -24,6 +30,12 @@ const ProductList = () => {
                     </div>
                     <div className='card-text'>
                       $ {product.price}
+                    </div>
+                    <div className='like-icon'>
+                      <IconHeart
+                        onClick={() => handleLike(product.id)}
+                        filled={isLiked(product.id)}
+                      />
                     </div>
                   &nbsp;
                     <button onClick={() => addToCart(product)} className='btn'>Add to Cart</button>
