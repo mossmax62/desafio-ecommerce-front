@@ -31,15 +31,13 @@ const ShoppingCart = () => {
             ))}
             <br />
           </div>
+          <div>
+            <h3>Total del carro: $ {cart.reduce((total, product) => total + product.price * product.quantity, 0)}</h3>
+            <button onClick={clearCart} className='btn btn-danger'>Clear Cart</button>
+          </div>
         </div>
       </div>
-      <div>
-        <div className='container'>
-          <h3>Total del carro: $ {cart.reduce((total, product) => total + product.price * product.quantity, 0)}</h3>
-        </div>
-        <button onClick={clearCart} className='btn btn-danger'>Clear Cart</button>
-
-      </div>
+      <div />
     </div>
   )
 }

@@ -5,7 +5,9 @@ const Home = () => {
     <>
       <div className='container'>
 
-        <h1>Welcome to the Home page</h1>
+        <h2>Welcome to the Marketplace</h2>
+
+        <h3>Current products</h3>
 
         <ProductList />
 

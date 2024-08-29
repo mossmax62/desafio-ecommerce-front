@@ -27,7 +27,7 @@ const Navigation = () => {
     <>
       <Navbar className='nav' expand='lg'>
         <Container>
-          <Navbar.Brand href='/'>DESAFIO ECOMMERCE</Navbar.Brand>
+          <Navbar.Brand href='/'><h1>DESAFIO ECOMMERCE</h1></Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav

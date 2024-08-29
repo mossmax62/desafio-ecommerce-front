@@ -1,8 +1,8 @@
 .product-list{
 
     overflow: auto;
-    height: 70vh;
-    
+    height: 80vh;
+    margin:25px;
     
 }
 .btn {
