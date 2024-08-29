@@ -13,7 +13,7 @@ const ProductList = () => {
           <div className='product-list'>
             <div className='row'>
               {products.map(product => (
-                <div key={product.id} className='col-sm-2 card m-2 p-1 text-center'>
+                <div key={product.id} className='card col-sm-2 card m-2 p-1 text-center'>
                   <div className='card-title'>
                     <h3>{product.make}</h3>
                     <h2>{product.model}</h2>
@@ -25,7 +25,7 @@ const ProductList = () => {
                     $ {product.horsepower}
                   </div>
                   &nbsp;
-                  <button onClick={() => addToCart(product)} className='btn btn-primary'>Add to Cart</button>
+                  <button onClick={() => addToCart(product)} className='btn'>Add to Cart</button>
                 </div>
               ))}
             </div>

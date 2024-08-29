@@ -22,7 +22,7 @@ const Navigation = () => {
 
     return (
         <>
-            <Navbar bg="light" expand="lg">
+            <Navbar className='nav'  expand="lg">
                 <Container>
                     <Navbar.Brand href='/' >DESAFIO ECOMMERCE</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
