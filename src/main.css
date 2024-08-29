@@ -3,8 +3,8 @@ body {
     margin: 0;
     padding: 10;
     overflow: hidden;
-    background-color: #0c1e28;
-    color: white;
+    background-color: #dce0e6;
+    color: #1f1f20;
     height: 100vh;
 }
 
@@ -19,7 +19,7 @@ body {
     bottom: 100%;
     width: 2px;
     height: 20px;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(43, 76, 126, 1);
     animation: fall linear infinite;
 }
 
@@ -92,4 +92,9 @@ body {
     to {
         transform: translateY(100vh);
     }
+}
+
+.nav {
+    background-color: #2b4c7e;
+    color: #dce0e6;
 }
