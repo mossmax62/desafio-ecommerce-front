@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import responseCars from '../assets/cars.json'
+import { useNavigate } from 'react-router-dom'
 
 export const ProductContext = createContext()
 const cars = responseCars
@@ -14,6 +15,9 @@ const ProductContextProvider = ({ children }) => {
     const storedProducts = localStorage.getItem('products')
     return storedProducts ? JSON.parse(storedProducts) : cars
   })
+  const [carSelected, setCarSelected] = useState('')
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     // Load products from localStorage on component mount
@@ -42,8 +46,14 @@ const ProductContextProvider = ({ children }) => {
     setProducts(products.filter((product) => product.id !== id))
   }
 
+  const handleSeeSelectedCar = (event, id) => {
+    event.preventDefault()
+    setCarSelected(products.find(product => product.id === id))
+    navigate(`/car/${id}`)
+  }
+
   return (
-    <ProductContext.Provider value={{ products, addProduct, updateProduct, deleteProduct }}>
+    <ProductContext.Provider value={{ products, addProduct, updateProduct, deleteProduct, carSelected, handleSeeSelectedCar }}>
       {children}
     </ProductContext.Provider>
   )
