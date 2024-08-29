@@ -24,11 +24,29 @@ export function AuthProvider ({ children }) {
     const storedAuth = localStorage.getItem('isAuthenticated')
     return storedAuth ? JSON.parse(storedAuth) : false
   })
-  const [currentUser, setCurrentUser] = useState(null) // Store logged-in user
+  const [currentUser, setCurrentUser] = useState(() => {
+    // Retrieve user data from localStorage on component mount
+    if (localStorage.getItem('isAuthenticated') === 'true') {
+      const storedUsername = localStorage.getItem('currentUser')
+      if (storedUsername) {
+        // Find the user in the 'users' array based on the stored username
+        return users.find(user => user.username === storedUsername)
+      }
+    }
+    return null
+  })
 
   useEffect(() => {
-    localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated))
-  }, [isAuthenticated])
+    if (isAuthenticated) {
+      localStorage.setItem('isAuthenticated', 'true')
+      if (currentUser) {
+        localStorage.setItem('currentUser', currentUser.username)
+      }
+    } else {
+      localStorage.removeItem('isAuthenticated')
+      localStorage.removeItem('currentUser')
+    }
+  }, [isAuthenticated, currentUser])
 
   // Login Function
   const login = (username, password) => {

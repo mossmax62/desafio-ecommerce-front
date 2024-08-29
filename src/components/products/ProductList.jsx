@@ -22,7 +22,7 @@ const ProductList = () => {
                     <img className='card-img-top' src={product.image} alt={product.model} />
                   </div>
                   <div className='card-text'>
-                    $ {product.horsepower}
+                    $ {product.price}
                   </div>
                   &nbsp;
                   <button onClick={() => addToCart(product)} className='btn'>Add to Cart</button>

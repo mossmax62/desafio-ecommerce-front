@@ -22,9 +22,9 @@ const ShoppingCart = () => {
                   Cantidad : $ {product.quantity}
                 </div>
                 <div className='card-text'>
-                  $ {product.horsepower * product.quantity}
+                  $ {product.price * product.quantity}
                 </div>
-                <button onClick={() => addToCart(product)} className='btn btn-primary'>Add to Cart</button>
+                <button onClick={() => addToCart(product)} className='btn btn-primary'>Add more</button>
                 <button onClick={() => removeFromCart(product.id)} className='btn btn-danger'>Remove</button>
               </div>
 
@@ -34,6 +34,9 @@ const ShoppingCart = () => {
         </div>
       </div>
       <div>
+        <div className='container'>
+          <h3>Total del carro: $ {cart.reduce((total, product) => total + product.price * product.quantity, 0)}</h3>
+        </div>
         <button onClick={clearCart} className='btn btn-danger'>Clear Cart</button>
 
       </div>
