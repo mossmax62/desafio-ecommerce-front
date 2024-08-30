@@ -1,10 +1,12 @@
 import React from 'react'
 import { useProducts } from '../contexts/ProductContext'
+import { useCart } from '../contexts/CartContext'
 import IconHeart from '../components/fav/IconHeart'
 import '../components/products/ProductList'
 
 const Favoritos = () => {
   const { products, toggleLike, isLiked } = useProducts()
+  const { addToCart } = useCart()
 
   // Filtra los productos que tienen un like
   const favoriteProducts = products.filter(product => isLiked(product.id))
