@@ -10,6 +10,7 @@ import ShoppingCart from './components/cart/ShoppingCart'
 import Favoritos from './pages/Favoritos'
 import UserProfile from './pages/UserProfile'
 import ManageProductsView from './pages/ManageProducts'
+import CarDetails from './pages/CarDetails'
 
 function App () {
   return (
@@ -56,6 +57,10 @@ function App () {
         <Route
           path='/sign-up'
           element={<SingUp />}
+        />
+        <Route
+          path='/car/:id'
+          element={<CarDetails />}
         />
       </Routes>
     </div>
