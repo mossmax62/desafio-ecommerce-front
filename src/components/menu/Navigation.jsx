@@ -35,7 +35,7 @@ const Navigation = () => {
               navbarScroll
             >
               <Link to='/' className='nav-link btn btn-warning m-1'>Inicio</Link>
-              <Link to='/notifications' className='nav-link btn btn-warning m-1'><NotificationBell count={3} /> </Link>
+              <Link to='/notifications' className='nav-link btn btn-warning m-1'><NotificationBell /> </Link>
               <Link to='/shopping-cart' className='nav-link btn btn-warning m-1'><CartIcon itemCount={totalProductos} /></Link>
 
               {!isAuthenticated
