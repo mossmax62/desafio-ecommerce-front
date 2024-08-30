@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { FaHeart } from 'react-icons/fa'
 import './FavoriteHeart.css'
 
-const NotificationBell = ({ count }) => {
+const FavoriteHeart = ({ count }) => {
   return (
     <div className='favorite-heart'>
       <FaHeart className='heart-icon' />
@@ -11,8 +11,8 @@ const NotificationBell = ({ count }) => {
   )
 }
 
-NotificationBell.propTypes = {
+FavoriteHeart.propTypes = {
   count: PropTypes.number.isRequired,
 }
 
-export default NotificationBell
+export default FavoriteHeart

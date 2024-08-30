@@ -1,7 +1,7 @@
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import NotificationBell from './NotificationBell'
+import FavoriteHeart from './FavoriteHeart'
 import CartIcon from './CartIcon'
 import { useAuth } from '../../contexts/AuthContext'
 import { useCart } from '../../contexts/CartContext'
@@ -35,7 +35,7 @@ const Navigation = () => {
               navbarScroll
             >
               <Link to='/' className='nav-link btn btn-warning m-1'>Inicio</Link>
-              <Link to='/notifications' className='nav-link btn btn-warning m-1'><NotificationBell /> </Link>
+              <Link to='/favoritos' className='nav-link btn btn-warning m-1'><FavoriteHeart /> </Link>
               <Link to='/shopping-cart' className='nav-link btn btn-warning m-1'><CartIcon itemCount={totalProductos} /></Link>
 
               {!isAuthenticated
