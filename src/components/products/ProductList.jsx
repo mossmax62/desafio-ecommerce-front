@@ -1,11 +1,14 @@
-import { useProducts } from '../../contexts/ProductContext'
+import { ProductContext, useProducts } from '../../contexts/ProductContext'
 import { useCart } from '../../contexts/CartContext'
 import './ProductList.css'
+import { useContext } from 'react'
 
 const ProductList = () => {
   const { products } = useProducts()
   const { addToCart } = useCart()
+
   console.log(products)
+  const { handleSeeSelectedCar } = useContext(ProductContext)
 
   return (
     <>
@@ -21,7 +24,7 @@ const ProductList = () => {
                       <h2>{product.model}</h2>
                     </div>
                     <div className='card-body'>
-                      <img className='card-img-top img-fluid border border-primary rounded' src={product.image} alt={product.model} />
+                    <a href='' onClick={() => handleSeeSelectedCar(event, product.id)}><img className='card-img-top img-fluid border border-primary rounded' src={product.image} alt={product.model} /></a>
                     </div>
                     <div className='card-text'>
                       $ {product.price}
