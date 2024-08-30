@@ -12,11 +12,7 @@ const SingIn = () => {
     e.preventDefault()
     try {
       // await auth.signInWithEmailAndPassword(email, password);
-
-      console.log('Signed In')
-      console.log(email)
-      console.log(password)
-      login()
+      login(email, password)
       navigate('/user-profile')
     } catch (error) {
       setError(error.message)

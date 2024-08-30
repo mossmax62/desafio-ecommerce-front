@@ -1,5 +1,4 @@
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
-import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import NotificationBell from './NotificationBell'
 import CartIcon from './CartIcon'
@@ -27,7 +26,7 @@ const Navigation = () => {
     <>
       <Navbar className='nav' expand='lg'>
         <Container>
-          <Navbar.Brand href='/'>DESAFIO ECOMMERCE</Navbar.Brand>
+          <Navbar.Brand href='/'><h1>DESAFIO ECOMMERCE</h1></Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav
@@ -47,7 +46,7 @@ const Navigation = () => {
                     {/* <Link to="/sign-up" className="nav-link btn btn-warning">Sign Up</Link> */}
                     Sign Up
                   </NavDropdown.Item>
-                </NavDropdown>
+                  </NavDropdown>
                 : <NavDropdown title='Mi cuenta' id='basic-nav-dropdown' className='nav-link btn btn-warning m-1 p-1'>
                   <NavDropdown.Item href='/user-profile' className='nav-link btn btn-warning'>
                     Profile
@@ -59,7 +58,7 @@ const Navigation = () => {
                   <NavDropdown.Item onClick={handleLogout} className='nav-link btn btn-warning'>
                     Sign Out
                   </NavDropdown.Item>
-                </NavDropdown>}
+                  </NavDropdown>}
               {/* <Link to="/sign-in" className="nav-link btn btn-warning">Sign In</Link>
                         <Link to="/sign-up" className="nav-link btn btn-warning">Sign Up</Link> */}
             </Nav>

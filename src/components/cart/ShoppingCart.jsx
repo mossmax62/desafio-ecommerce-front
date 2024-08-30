@@ -22,21 +22,23 @@ const ShoppingCart = () => {
                   Cantidad : $ {product.quantity}
                 </div>
                 <div className='card-text'>
-                  $ {product.horsepower * product.quantity}
+                  $ {product.price * product.quantity}
                 </div>
-                <button onClick={() => addToCart(product)} className='btn btn-primary'>Add to Cart</button>
+                <button onClick={() => addToCart(product)} className='btn btn-primary'>Add more</button>
                 <button onClick={() => removeFromCart(product.id)} className='btn btn-danger'>Remove</button>
               </div>
 
             ))}
             <br />
           </div>
+          <div>
+            <h3>Total de productos: $ {cart.reduce((total, product) => total + product.quantity, 0)}</h3>
+            <h3 className='text-success'>Total del carro: $ {cart.reduce((total, product) => total + product.price * product.quantity, 0)}</h3>
+            <button onClick={clearCart} className='btn btn-danger'>Clear Cart</button>
+          </div>
         </div>
       </div>
-      <div>
-        <button onClick={clearCart} className='btn btn-danger'>Clear Cart</button>
-
-      </div>
+      <div />
     </div>
   )
 }

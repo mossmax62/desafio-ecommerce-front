@@ -25,6 +25,8 @@ const ProductContextProvider = ({ children }) => {
     const storedProducts = localStorage.getItem('products')
     if (storedProducts) {
       setProducts(JSON.parse(storedProducts))
+    } else {
+      setProducts(cars)
     }
   }, [])
 
