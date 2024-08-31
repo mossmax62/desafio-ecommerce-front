@@ -7,10 +7,11 @@ import SingIn from './components/auth/SingIn'
 import SingUp from './components/auth/SingUp'
 import Home from './pages/Home'
 import ShoppingCart from './components/cart/ShoppingCart'
-import Notifications from './pages/Notifications'
+import Favoritos from './pages/Favoritos'
 import UserProfile from './pages/UserProfile'
 import ManageProductsView from './pages/ManageProducts'
 import CarDetails from './pages/CarDetails'
+import Footer from './components/footer/Footer'
 
 function App () {
   return (
@@ -46,8 +47,8 @@ function App () {
           }
         />
         <Route
-          path='/notifications'
-          element={<Notifications />}
+          path='/favoritos'
+          element={<Favoritos />}
         />
 
         <Route
@@ -63,6 +64,7 @@ function App () {
           element={<CarDetails />}
         />
       </Routes>
+      <Footer />
     </div>
   )
 }

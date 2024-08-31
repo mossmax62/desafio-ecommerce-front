@@ -13,7 +13,7 @@ const ProductContextProvider = ({ children }) => {
   }
   const [products, setProducts] = useState(() => {
     const storedProducts = localStorage.getItem('products')
-    return storedProducts ? JSON.parse(storedProducts) : cars
+    return storedProducts ? JSON.parse(storedProducts) : cars.map(product => ({ ...product, liked: false }))
   })
   const [carSelected, setCarSelected] = useState('')
 
@@ -36,7 +36,7 @@ const ProductContextProvider = ({ children }) => {
   }, [products])
 
   const addProduct = (product) => {
-    setProducts([...products, product])
+    setProducts([...products, { ...product, liked: false }])
   }
 
   const updateProduct = (updatedProduct) => {
@@ -48,6 +48,19 @@ const ProductContextProvider = ({ children }) => {
     setProducts(products.filter((product) => product.id !== id))
   }
 
+  const toggleLike = (id) => {
+    setProducts(prevProducts =>
+      prevProducts.map(product =>
+        product.id === id ? { ...product, liked: !product.liked } : product
+      )
+    )
+  }
+
+  const isLiked = (id) => {
+    const product = products.find(product => product.id === id)
+    return product ? product.liked : false
+  }
+
   const handleSeeSelectedCar = (event, id) => {
     event.preventDefault()
     setCarSelected(products.find(product => product.id === id))
@@ -55,7 +68,7 @@ const ProductContextProvider = ({ children }) => {
   }
 
   return (
-    <ProductContext.Provider value={{ products, addProduct, updateProduct, deleteProduct, carSelected, handleSeeSelectedCar }}>
+    <ProductContext.Provider value={{ products, addProduct, updateProduct, deleteProduct, carSelected, handleSeeSelectedCar, toggleLike, isLiked }}>
       {children}
     </ProductContext.Provider>
   )

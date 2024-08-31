@@ -16,3 +16,4 @@ NotificationBell.propTypes = {
 }
 
 export default NotificationBell
+

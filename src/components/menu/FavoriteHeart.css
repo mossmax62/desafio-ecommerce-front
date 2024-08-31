@@ -1,10 +1,10 @@
 /* NotificationBell.css */
-.notification-bell {
+.favorite-heart {
     position: relative;
     display: inline-block;
   }
   
-  .bell-icon {
+  .heart-icon {
     font-size: 24px;
   }
   

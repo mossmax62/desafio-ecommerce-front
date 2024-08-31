@@ -1,12 +1,17 @@
 import { ProductContext, useProducts } from '../../contexts/ProductContext'
 import { useCart } from '../../contexts/CartContext'
+import IconHeart from '../fav/IconHeart'
 import './ProductList.css'
 import { useContext } from 'react'
 
 const ProductList = () => {
-  const { products } = useProducts()
+  const { products, toggleLike, isLiked } = useProducts()
   const { addToCart } = useCart()
 
+  // Función para manejar el like y dislike
+  const handleLike = (productId) => {
+    toggleLike(productId)
+  }
   console.log(products)
   const { handleSeeSelectedCar } = useContext(ProductContext)
 
@@ -24,10 +29,16 @@ const ProductList = () => {
                       <h2>{product.model}</h2>
                     </div>
                     <div className='card-body'>
-                    <a href='' onClick={() => handleSeeSelectedCar(event, product.id)}><img className='card-img-top img-fluid border border-primary rounded' src={product.image} alt={product.model} /></a>
+                      <a href='' onClick={() => handleSeeSelectedCar(event, product.id)}><img className='card-img-top img-fluid border border-primary rounded' src={product.image} alt={product.model} /></a>
                     </div>
                     <div className='card-text'>
                       $ {product.price}
+                    </div>
+                    <div className='like-icon'>
+                      <IconHeart
+                        onClick={() => handleLike(product.id)}
+                        filled={isLiked(product.id)}
+                      />
                     </div>
                   &nbsp;
                     <button onClick={() => addToCart(product)} className='btn btn-primary'>Add to Cart</button>
