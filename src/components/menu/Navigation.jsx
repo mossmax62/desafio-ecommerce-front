@@ -2,6 +2,7 @@ import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import FavoriteHeart from './FavoriteHeart'
 import CartIcon from './CartIcon'
+import Logo from '../../assets/img/MDF.png'
 import { useAuth } from '../../contexts/AuthContext'
 import { useCart } from '../../contexts/CartContext'
 
@@ -26,7 +27,7 @@ const Navigation = () => {
     <>
       <Navbar className='nav' expand='lg'>
         <Container>
-          <Navbar.Brand href='/'><h1>DESAFIO ECOMMERCE</h1></Navbar.Brand>
+          <Navbar.Brand href='/'> <img src={Logo} width='40' height='40' alt='logo' /></Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav

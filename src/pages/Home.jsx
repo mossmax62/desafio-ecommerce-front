@@ -5,14 +5,13 @@ const Home = () => {
     <>
       <div className='container'>
 
-        <h2>Welcome to the Marketplace</h2>
+        <h2>Tu próximo auto, más cerca de lo que imaginas.</h2>
 
         <h3>Current products</h3>
 
         <ProductList />
 
       </div>
-
     </>
   )
 }

@@ -2,10 +2,13 @@
 body {
     margin: 0;
     padding: 10;
-    overflow: hidden;
+    overflow: auto;
     background-color: #dce0e6;
     color: #1f1f20;
     height: 100vh;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 /* .rain-container {

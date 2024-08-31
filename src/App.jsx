@@ -11,6 +11,7 @@ import Favoritos from './pages/Favoritos'
 import UserProfile from './pages/UserProfile'
 import ManageProductsView from './pages/ManageProducts'
 import CarDetails from './pages/CarDetails'
+import Footer from './components/footer/Footer'
 
 function App () {
   return (
@@ -63,6 +64,7 @@ function App () {
           element={<CarDetails />}
         />
       </Routes>
+      <Footer />
     </div>
   )
 }
