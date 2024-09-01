@@ -6,6 +6,7 @@ import Logo from '../../assets/img/MDF2.jpeg'
 import { useAuth } from '../../contexts/AuthContext'
 import { useCart } from '../../contexts/CartContext'
 import { useProducts } from '../../contexts/ProductContext'
+import SearchBar from '../../components/searchBar/SearchBar'
 
 const Navigation = () => {
   const { isAuthenticated, logout } = useAuth()
@@ -40,6 +41,9 @@ const Navigation = () => {
           <Navbar.Brand href='/'> <img src={Logo} width='150' height='60' alt='logo' className='d-inline-block align-top border rounded' /></Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
+            <div className='w-100 d-flex justify-content-center'>
+              <SearchBar />
+            </div>
             <Nav
               className='ms-auto'
               navbarScroll
