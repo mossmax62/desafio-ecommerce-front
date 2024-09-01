@@ -1,0 +1,22 @@
+.sugerencias-list {
+  background-color: white;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-height: 40vh;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.sugerencias-list li {
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+}
+
+.sugerencias-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.sugerencias-list .li-image {
+  max-height: 6em;
+}
