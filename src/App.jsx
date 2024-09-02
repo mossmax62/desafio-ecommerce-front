@@ -12,6 +12,7 @@ import UserProfile from './pages/UserProfile'
 import ManageProductsView from './pages/ManageProducts'
 import CarDetails from './pages/CarDetails'
 import Footer from './components/footer/Footer'
+import NotFound from './pages/NotFound'
 
 function App () {
   return (
@@ -63,6 +64,7 @@ function App () {
           path='/car/:id'
           element={<CarDetails />}
         />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
     </div>
