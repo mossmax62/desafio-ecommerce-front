@@ -12,7 +12,7 @@ const FavoriteHeart = ({ count }) => {
 }
 
 FavoriteHeart.propTypes = {
-  count: PropTypes.number.isRequired,
+  count: PropTypes.number.isRequired
 }
 
 export default FavoriteHeart
