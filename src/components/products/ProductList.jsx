@@ -21,18 +21,20 @@ const ProductList = () => {
         <div className='container'>
           <div className='product-list'>
             <div className='row'>
-              {products.map(product => (
+              {products && products.length > 0 && products.map((product) => (
                 <div key={product.id} className='col-md-3 sm-6 mb-3'>
                   <div className='card text-center border border-primary rounded p-3'>
                     <div className='card-title'>
-                      <h3>{product.make}</h3>
-                      <h2>{product.model}</h2>
+                      <h3>{product.marca}</h3>
+                      <h2>{product.modelo}</h2>
                     </div>
                     <div className='card-body'>
-                      <a href='' onClick={() => handleSeeSelectedCar(event, product.id)}><img className='card-img-top img-fluid border border-primary rounded' src={product.image} alt={product.model} /></a>
+                      <a href='' onClick={(event) => { event.preventDefault(); handleSeeSelectedCar(event, product.id); }}>
+                        <img className='card-img-top img-fluid border border-primary rounded' src={product.imagen_url} alt={product.modelo} />
+                      </a>
                     </div>
                     <div className='card-text'>
-                      $ {product.price}
+                      $ {product.precio}
                     </div>
                     <div className='like-icon'>
                       <IconHeart
