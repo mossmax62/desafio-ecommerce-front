@@ -4,8 +4,6 @@ import { useProducts } from '../../contexts/ProductContext'
 import PropTypes from 'prop-types'
 
 const EditProduct = ({ productToEdit, onEditComplete }) => {
-  // ...
-
   EditProduct.propTypes = {
     productToEdit: PropTypes.object.isRequired,
     onEditComplete: PropTypes.func.isRequired

@@ -1,51 +1,48 @@
 import React, { createContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import responseCars from '../assets/cars.json'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 export const ProductContext = createContext()
-const cars = responseCars
-const localStorage = window.localStorage
 
 const ProductContextProvider = ({ children }) => {
-  ProductContextProvider.propTypes = {
-    children: PropTypes.node.isRequired
-  }
-  const [products, setProducts] = useState(() => {
-    const storedProducts = localStorage.getItem('products')
-    return storedProducts ? JSON.parse(storedProducts) : cars.map(product => ({ ...product, liked: false }))
-  })
+  const [products, setProducts] = useState([])
   const [carSelected, setCarSelected] = useState('')
 
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Load products from localStorage on component mount
-    console.log(cars)
-    const storedProducts = localStorage.getItem('products')
-    if (storedProducts) {
-      setProducts(JSON.parse(storedProducts))
-    } else {
-      setProducts(cars)
-    }
+    // Cargar productos del backend
+    axios.get('http://localhost:3000/api/products')
+      .then(response => setProducts(response.data))
+      .catch(error => console.error('Error fetching products:', error))
   }, [])
 
   useEffect(() => {
-    // Save products to localStorage whenever it changes
-    localStorage.setItem('products', JSON.stringify(products))
+    // Guardar productos en localStorage cuando cambien
+    window.localStorage.setItem('products', JSON.stringify(products))
   }, [products])
 
   const addProduct = (product) => {
-    setProducts([...products, { ...product, liked: false }])
+    axios.post('http://localhost:3000/api/products', product)
+      .then(response => setProducts([...products, response.data]))
+      .catch(error => console.error('Error adding product:', error))
   }
 
   const updateProduct = (updatedProduct) => {
-    console.log(updatedProduct)
-    setProducts(products.map((product) => (product.id === updateProduct.id ? updatedProduct : product)))
+    axios.put(`http://localhost:3000/api/products/${updatedProduct.id}`, updatedProduct)
+      .then(response => {
+        setProducts(products.map(product =>
+          product.id === updatedProduct.id ? response.data : product
+        ))
+      })
+      .catch(error => console.error('Error updating product:', error))
   }
 
   const deleteProduct = (id) => {
-    setProducts(products.filter((product) => product.id !== id))
+    axios.delete(`http://localhost:3000/api/products/${id}`)
+      .then(() => setProducts(products.filter(product => product.id !== id)))
+      .catch(error => console.error('Error deleting product:', error))
   }
 
   const toggleLike = (id) => {
@@ -72,6 +69,10 @@ const ProductContextProvider = ({ children }) => {
       {children}
     </ProductContext.Provider>
   )
+}
+
+ProductContextProvider.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 const useProducts = () => {
