@@ -1,22 +1,11 @@
 // AuthContext.js
 import { createContext, useState, useContext, useEffect } from 'react'
-
+import axios from 'axios'
 import PropTypes from 'prop-types'
 
 const AuthContext = createContext()
 const localStorage = window.localStorage
-
-let users = []
-
-try {
-  // Attempt to load users from localStorage
-  const storedUsers = localStorage.getItem('users')
-  if (storedUsers) {
-    users = JSON.parse(storedUsers)
-  }
-} catch (error) {
-  console.error('Error loading users from localStorage:', error)
-}
+const BACKEND_URL = 'http://localhost:3000'
 
 export function AuthProvider ({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
@@ -25,69 +14,90 @@ export function AuthProvider ({ children }) {
     return storedAuth ? JSON.parse(storedAuth) : false
   })
   const [currentUser, setCurrentUser] = useState(() => {
-    // Retrieve user data from localStorage on component mount
-    if (localStorage.getItem('isAuthenticated') === 'true') {
-      const storedUsername = localStorage.getItem('currentUser')
-      if (storedUsername) {
-        // Find the user in the 'users' array based on the stored username
-        return users.find(user => user.username === storedUsername)
-      }
-    }
-    return null
+    // Check localStorage for current user on mount
+    const storedUser = localStorage.getItem('currentUser')
+    return storedUser ? JSON.parse(storedUser) : null
   })
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      localStorage.setItem('isAuthenticated', 'true')
-      if (currentUser) {
-        localStorage.setItem('currentUser', currentUser.username)
-      }
-    } else {
-      localStorage.removeItem('isAuthenticated')
-      localStorage.removeItem('currentUser')
-    }
-  }, [isAuthenticated, currentUser])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   // Login Function
-  const login = (username, password) => {
-    const user = users.find(
-      (user) => user.username === username && user.password === password
-    )
+  const login = async (email, password) => {
+    setLoading(true)
+    setError(null)
 
-    if (user) {
+    try {
+      const response = await axios.post(BACKEND_URL + '/login', { email, password })
+
+      console.log(response)
+      const token = response.data.token
+      const userData = response.data.user
+      console.log(userData)
+
+      // Store token and user data in localStorage
+      localStorage.setItem('token', token)
+      localStorage.setItem('currentUser', JSON.stringify(userData))
+
+      // Update authentication state
+      localStorage.setItem('isAuthenticated', 'true')
       setIsAuthenticated(true)
-      setCurrentUser(user)
-      return true // Successful login
-    } else {
-      throw new Error('Invalid credentials.')
+      setCurrentUser(userData)
+
+      // Successful login
+      return true
+    } catch (error) {
+      setError(error.response.data.message)
+      console.error('Login error:', error)
+      setLoading(false)
+
+      // Failed login
+      throw new Error(error.response.data.message)
+    } finally {
+      setLoading(false)
     }
   }
 
   // Signup Function
-  const signup = (username, password) => {
+  const signup = async (nombre, apellido, email, password) => {
     // Basic validation (add more as needed)
-    if (!username || !password) {
-      throw new Error('Username and password are required.')
+    if (!email || !password || !nombre || !apellido) {
+      throw new Error('Nombre, Apellido, Email and password are required.')
     }
 
-    // Check if the username is already taken
-    const existingUser = users.find((user) => user.username === username)
-    if (existingUser) {
-      throw new Error('Username already taken.')
+    try {
+      const response = await axios.post(BACKEND_URL + '/signup', {
+        nombre,
+        apellido,
+        email,
+        password,
+        role: 'user'
+      })
+
+      if (response.status === 201) {
+        // Successful signup
+        const newUser = response.data.user // Assuming the backend returns the created user data
+        localStorage.setItem('currentUser', JSON.stringify(newUser))
+        setCurrentUser(newUser)
+        return true
+      } else {
+        // Handle non-201 status codes if needed
+        throw new Error('Signup failed. Please try again later.')
+      }
+    } catch (error) {
+      // Handle signup errors, e.g., network errors, validation errors from the backend
+      console.error('Signup error:', error)
+      if (error.response && error.response.data && error.response.data.message) {
+        throw new Error(error.response.data.message) // Throw backend error message
+      } else {
+        throw new Error('Signup failed. Please try again later.') // Throw generic error message
+      }
     }
-
-    const newUser = { username, password }
-    users.push(newUser)
-
-    // Update localStorage
-    localStorage.setItem('users', JSON.stringify(users))
-
-    setIsAuthenticated(true)
-    setCurrentUser(newUser)
-    return true // Successful signup
   }
 
   const logout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('currentUser')
+    localStorage.removeItem('isAuthenticated')
     setIsAuthenticated(false)
     setCurrentUser(null)
   }

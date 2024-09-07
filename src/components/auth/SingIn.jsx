@@ -7,19 +7,23 @@ const SingIn = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const navigate = useNavigate()
+  const { login } = useAuth()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setError('')
     try {
       // await auth.signInWithEmailAndPassword(email, password);
-      login(email, password)
-      navigate('/user-profile')
+      const loginSuccessful = await login(email, password)
+      console.log(loginSuccessful)
+      if (loginSuccessful) {
+        // Login was successful, navigate to user profile
+        navigate('/user-profile')
+      }
     } catch (error) {
       setError(error.message)
     }
   }
-
-  const { login } = useAuth()
 
   return (
     <div className='container'>
@@ -28,6 +32,7 @@ const SingIn = () => {
         <form onSubmit={handleSubmit}>
           <div className='mb-3'>
             <input
+              required='{true}?'
               type='email'
               className='form-control'
               placeholder='Email'
@@ -36,6 +41,7 @@ const SingIn = () => {
           </div>
           <div className='mb-3'>
             <input
+              required='{true}?'
               type='password'
               className='form-control'
               placeholder='Password'

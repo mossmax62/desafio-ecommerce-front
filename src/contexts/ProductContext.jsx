@@ -11,7 +11,7 @@ const ProductContextProvider = ({ children }) => {
 
   const navigate = useNavigate()
 
-  useEffect(() => {
+  /* useEffect(() => {
     // Cargar productos del backend
     axios.get('http://localhost:3000/api/products')
       .then(response => setProducts(response.data))
@@ -22,7 +22,7 @@ const ProductContextProvider = ({ children }) => {
     // Guardar productos en localStorage cuando cambien
     window.localStorage.setItem('products', JSON.stringify(products))
   }, [products])
-
+*/
   const addProduct = (product) => {
     axios.post('http://localhost:3000/api/products', product)
       .then(response => setProducts([...products, response.data]))
