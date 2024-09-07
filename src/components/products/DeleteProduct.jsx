@@ -1,21 +1,15 @@
-
-import { useProducts } from '../../context/ProductContext';
-import PropTypes from 'prop-types';
-
+import { useProducts } from '../../context/ProductContext'
+import PropTypes from 'prop-types'
 
 const DeleteProduct = ({ id }) => {
+  const { deleteProduct } = useProducts()
 
-
-
-    const { deleteProduct } = useProducts();
-
-    return (
-        <button onClick={() => deleteProduct(id)}>Delete</button>
-    );
+  return (
+    <button onClick={() => deleteProduct(id)}>Delete</button>)
 }
 
 DeleteProduct.propTypes = {
-    id: PropTypes.number.isRequired,
-};
+  id: PropTypes.number.isRequired
+}
 
-export default DeleteProduct;
+export default DeleteProduct
