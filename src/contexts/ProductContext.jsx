@@ -12,6 +12,7 @@ const ProductContextProvider = ({ children }) => {
   const navigate = useNavigate()
 
   useEffect(() => {
+
     // Solicitar productos desde el backend
     const fetchProducts = async () => {
       try {
@@ -30,26 +31,19 @@ const ProductContextProvider = ({ children }) => {
     fetchProducts()
   }, [])
 
-  /* useEffect(() => {
-    // Cargar productos del backend
-    axios.get('http://localhost:3000/api/products')
-      .then(response => setProducts(response.data))
-      .catch(error => console.error('Error fetching products:', error))
-  }, [])
-
   useEffect(() => {
     // Guardar productos en localStorage cuando cambien
     window.localStorage.setItem('products', JSON.stringify(products))
   }, [products])
-*/
+
   const addProduct = (product) => {
-    axios.post('http://localhost:3000/api/products', product)
+    axios.post('http://localhost:3000/products', product)
       .then(response => setProducts([...products, response.data]))
       .catch(error => console.error('Error adding product:', error))
   }
 
   const updateProduct = (updatedProduct) => {
-    axios.put(`http://localhost:3000/api/products/${updatedProduct.id}`, updatedProduct)
+    axios.put(`http://localhost:3000/products/${updatedProduct.id}`, updatedProduct)
       .then(response => {
         setProducts(products.map(product =>
           product.id === updatedProduct.id ? response.data : product
@@ -59,7 +53,7 @@ const ProductContextProvider = ({ children }) => {
   }
 
   const deleteProduct = (id) => {
-    axios.delete(`http://localhost:3000/api/products/${id}`)
+    axios.delete(`http://localhost:3000/products/${id}`)
       .then(() => setProducts(products.filter(product => product.id !== id)))
       .catch(error => console.error('Error deleting product:', error))
   }
