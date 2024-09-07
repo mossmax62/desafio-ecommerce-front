@@ -11,6 +11,7 @@ const AddProduct = () => {
   const [image, setImage] = useState('')
   const [description, setDescription] = useState('')
   const [quantity, setQuantity] = useState('')
+  const [categoria, setCategoria] = useState('')
   const [errors, setErrors] = useState({})
 
   const handleSubmit = (e) => {
@@ -24,6 +25,7 @@ const AddProduct = () => {
     if (!model) newErrors.model = 'Model is required'
     if (!image) newErrors.image = 'Image URL is required'
     if (!description) newErrors.description = 'Description is required'
+    if (!categoria) newErrors.categoria = 'Categoria is required'
     if (!quantity) newErrors.quantity = 'Quantity is required'
     else if (quantity <= 0) newErrors.quantity = 'Quantity must be greater than 0'
 
@@ -40,6 +42,7 @@ const AddProduct = () => {
       model,
       image,
       description,
+      categoria,
       quantity: parseInt(quantity, 10) // Ensure quantity is an integer
     })
 
@@ -51,6 +54,7 @@ const AddProduct = () => {
     setImage('')
     setDescription('')
     setQuantity('')
+    setCategoria('')
     setErrors({})
   }
 
@@ -135,6 +139,22 @@ const AddProduct = () => {
           {errors.image && <div className='invalid-feedback'>{errors.image}</div>}
         </div>
 
+        {/* Categoria */}
+        <div className='col-md-12'>
+          <label htmlFor='categoriaDescription' className='form-label'>Categoria</label>
+          <select
+            className={`form-select ${errors.categoria ? 'is-invalid' : ''}`}
+            id='categoriaDescription'
+            value={categoria}
+            onChange={(e) => setCategoria(e.target.value)}
+          >
+            <option value='Default'>Select a categoria</option>
+            <option value='Sedan'>Sedan</option>
+            <option value='4X4'>4X4</option>
+            <option value='Motocicleta'>Motocicleta</option>
+          </select>
+          {errors.categoria && <div className='invalid-feedback'>{errors.categoria}</div>}
+        </div>
         {/* Description */}
         <div className='col-md-12'>
           <label htmlFor='productDescription' className='form-label'>Description</label>
