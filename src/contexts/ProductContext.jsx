@@ -12,10 +12,23 @@ const ProductContextProvider = ({ children }) => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Cargar productos del backend
-    axios.get('http://localhost:3000/products')
-      .then(response => setProducts(response.data))
-      .catch(error => console.error('Error fetching products:', error))
+
+    // Solicitar productos desde el backend
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/products')
+        const fetchedProducts = response.data
+
+        // Almacenar los productos recibidos en el estado
+        setProducts(fetchedProducts)
+        // Guardar los productos en localStorage
+        localStorage.setItem('products', JSON.stringify(fetchedProducts))
+      } catch (error) {
+        console.error('Error fetching products:', error)
+      }
+    }
+
+    fetchProducts()
   }, [])
 
   useEffect(() => {
