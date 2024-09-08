@@ -1,33 +1,29 @@
-// src/components/AddProduct.jsx
 import { useState } from 'react'
 import { useProducts } from '../../contexts/ProductContext'
 
 const AddProduct = () => {
   const { addProduct } = useProducts()
-  const [name, setName] = useState('')
-  const [price, setPrice] = useState('')
-  const [make, setMake] = useState('')
-  const [model, setModel] = useState('')
-  const [image, setImage] = useState('')
-  const [description, setDescription] = useState('')
-  const [quantity, setQuantity] = useState('')
+  const [modelo, setModelo] = useState('')
+  const [marca, setMarca] = useState('')
+  const [descripcion, setDescripcion] = useState('')
+  const [precio, setPrecio] = useState('')
+  const [stock, setStock] = useState('')
+  const [imagen_url, setImagenUrl] = useState('')
   const [categoria, setCategoria] = useState('')
+  const [favorito, setFavorito] = useState(false)
   const [errors, setErrors] = useState({})
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // Basic validation
     const newErrors = {}
-    if (!name) newErrors.name = 'Name is required'
-    if (!price) newErrors.price = 'Price is required'
-    if (!make) newErrors.make = 'Make is required'
-    if (!model) newErrors.model = 'Model is required'
-    if (!image) newErrors.image = 'Image URL is required'
-    if (!description) newErrors.description = 'Description is required'
+    if (!modelo) newErrors.modelo = 'Modelo is required'
+    if (!marca) newErrors.marca = 'Marca is required'
+    if (!descripcion) newErrors.descripcion = 'Descripcion is required'
+    if (!precio) newErrors.precio = 'Precio is required'
+    if (!stock) newErrors.stock = 'Stock is required'
+    if (!imagen_url) newErrors.imagen_url = 'Image URL is required'
     if (!categoria) newErrors.categoria = 'Categoria is required'
-    if (!quantity) newErrors.quantity = 'Quantity is required'
-    else if (quantity <= 0) newErrors.quantity = 'Quantity must be greater than 0'
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors)
@@ -35,136 +31,117 @@ const AddProduct = () => {
     }
 
     addProduct({
-      id: Math.random(),
-      name,
-      price,
-      make,
-      model,
-      image,
-      description,
+      modelo,
+      marca,
+      descripcion,
+      precio: parseFloat(precio), // Convert price to number
+      stock: parseInt(stock, 10),
+      imagen_url,
       categoria,
-      quantity: parseInt(quantity, 10) // Ensure quantity is an integer
+      favorito
     })
 
-    // Clear form fields and errors
-    setName('')
-    setPrice('')
-    setMake('')
-    setModel('')
-    setImage('')
-    setDescription('')
-    setQuantity('')
+    setModelo('')
+    setMarca('')
+    setDescripcion('')
+    setPrecio('')
+    setStock('')
+    setImagenUrl('')
     setCategoria('')
+    setFavorito(false)
     setErrors({})
-  }
+  };
 
   return (
     <div className='container mt-4'>
       <h2>Add Product</h2>
       <form onSubmit={handleSubmit} className='row g-3'>
+        {/* Modelo */}
         <div className='col-md-6'>
-          <label htmlFor='productName' className='form-label'>Name</label>
+          <label htmlFor='productModel' className='form-label'>Modelo</label>
           <input
             type='text'
-            className={`form-control ${errors.name ? 'is-invalid' : ''}`}
-            id='productName'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          {errors.name && <div className='invalid-feedback'>{errors.name}</div>}
-        </div>
-
-        {/* Price */}
-        <div className='col-md-6'>
-          <label htmlFor='productPrice' className='form-label'>Price</label>
-          <input
-            type='number' // Use type="number" for price
-            className={`form-control ${errors.price ? 'is-invalid' : ''}`}
-            id='productPrice'
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-          />
-          {errors.price && <div className='invalid-feedback'>{errors.price}</div>}
-        </div>
-
-        {/* Make */}
-        <div className='col-md-4'>
-          <label htmlFor='productMake' className='form-label'>Make</label>
-          <input
-            type='text'
-            className={`form-control ${errors.make ? 'is-invalid' : ''}`}
-            id='productMake'
-            value={make}
-            onChange={(e) => setMake(e.target.value)}
-          />
-          {errors.make && <div className='invalid-feedback'>{errors.make}</div>}
-        </div>
-
-        {/* Model */}
-        <div className='col-md-4'>
-          <label htmlFor='productModel' className='form-label'>Model</label>
-          <input
-            type='text'
-            className={`form-control ${errors.model ? 'is-invalid' : ''}`}
+            className={`form-control ${errors.modelo ? 'is-invalid' : ''}`}
             id='productModel'
-            value={model}
-            onChange={(e) => setModel(e.target.value)}
+            value={modelo}
+            onChange={(e) => setModelo(e.target.value)}
           />
-          {errors.model && <div className='invalid-feedback'>{errors.model}</div>}
+          {errors.modelo && <div className='invalid-feedback'>{errors.modelo}</div>}
         </div>
 
-        {/* Quantity */}
-        <div className='col-md-4'>
-          <label htmlFor='productQuantity' className='form-label'>Quantity</label>
-          <input
-            type='number' // Use type="number" for quantity
-            className={`form-control ${errors.quantity ? 'is-invalid' : ''}`}
-            id='productQuantity'
-            value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
-          />
-          {errors.quantity && <div className='invalid-feedback'>{errors.quantity}</div>}
-        </div>
-
-        {/* Image URL */}
-        <div className='col-md-12'>
-          <label htmlFor='productImage' className='form-label'>Image URL</label>
+        {/* Marca */}
+        <div className='col-md-6'>
+          <label htmlFor='productMarca' className='form-label'>Marca</label>
           <input
             type='text'
-            className={`form-control ${errors.image ? 'is-invalid' : ''}`}
-            id='productImage'
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            className={`form-control ${errors.marca ? 'is-invalid' : ''}`}
+            id='productMarca'
+            value={marca}
+            onChange={(e) => setMarca(e.target.value)}
           />
-          {errors.image && <div className='invalid-feedback'>{errors.image}</div>}
+          {errors.marca && <div className='invalid-feedback'>{errors.marca}</div>}
+        </div>
+
+        {/* Precio */}
+        <div className='col-md-6'>
+          <label htmlFor='productPrecio' className='form-label'>Precio</label>
+          <input
+            type='number'
+            className={`form-control ${errors.precio ? 'is-invalid' : ''}`}
+            id='productPrecio'
+            value={precio}
+            onChange={(e) => setPrecio(e.target.value)}
+          />
+          {errors.precio && <div className='invalid-feedback'>{errors.precio}</div>}
+        </div>
+
+        {/* Stock */}
+        <div className='col-md-6'>
+          <label htmlFor='productStock' className='form-label'>Stock</label>
+          <input
+            type='number'
+            className={`form-control ${errors.stock ? 'is-invalid' : ''}`}
+            id='productStock'
+            value={stock}
+            onChange={(e) => setStock(e.target.value)}
+          />
+          {errors.stock && <div className='invalid-feedback'>{errors.stock}</div>}
+        </div>
+
+        {/* Imagen */}
+        <div className='col-md-12'>
+          <label htmlFor='productImageUrl' className='form-label'>Image URL</label>
+          <input
+            type='text'
+            className={`form-control ${errors.imagen_url ? 'is-invalid' : ''}`}
+            id='productImageUrl'
+            value={imagen_url}
+            onChange={(e) => setImagenUrl(e.target.value)}
+          />
+          {errors.imagen_url && <div className='invalid-feedback'>{errors.imagen_url}</div>}
         </div>
 
         {/* Categoria */}
         <div className='col-md-12'>
-          <label htmlFor='categoriaDescription' className='form-label'>Categoria</label>
-          <select
-            className={`form-select ${errors.categoria ? 'is-invalid' : ''}`}
-            id='categoriaDescription'
+          <label htmlFor='productCategoria' className='form-label'>Categoria</label>
+          <input
+            type='text'
+            className={`form-control ${errors.categoria ? 'is-invalid' : ''}`}
+            id='productCategoria'
             value={categoria}
             onChange={(e) => setCategoria(e.target.value)}
-          >
-            <option value='Default'>Select a categoria</option>
-            <option value='Sedan'>Sedan</option>
-            <option value='4X4'>4X4</option>
-            <option value='Motocicleta'>Motocicleta</option>
-          </select>
+          />
           {errors.categoria && <div className='invalid-feedback'>{errors.categoria}</div>}
         </div>
-        {/* Description */}
+
+        {/* Favorito */}
         <div className='col-md-12'>
-          <label htmlFor='productDescription' className='form-label'>Description</label>
-          <textarea
-            className={`form-control ${errors.description ? 'is-invalid' : ''}`}
-            id='productDescription'
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+          <label className='form-label'>Favorito</label>
+          <input
+            type='checkbox'
+            checked={favorito}
+            onChange={(e) => setFavorito(e.target.checked)}
           />
-          {errors.description && <div className='invalid-feedback'>{errors.description}</div>}
         </div>
 
         <div className='col-12'>
