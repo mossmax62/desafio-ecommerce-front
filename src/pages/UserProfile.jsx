@@ -14,7 +14,7 @@ const UserProfile = () => {
         </div>
         <div className='col-6'>
           <h1>User Profile</h1>
-          <h2>Bienvenido {currentUser.username}</h2>
+          <h2>Bienvenido {currentUser.nombre} {currentUser.apellido}</h2>
         </div>
 
       </div>

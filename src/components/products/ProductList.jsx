@@ -29,9 +29,7 @@ const ProductList = () => {
                       <h2>{product.modelo}</h2>
                     </div>
                     <div className='card-body'>
-                      <a href='' onClick={(event) => { event.preventDefault(); handleSeeSelectedCar(event, product.id); }}>
-                        <img className='card-img-top img-fluid border border-primary rounded' src={product.imagen_url} alt={product.modelo} />
-                      </a>
+                      <a href='' onClick={() => handleSeeSelectedCar(event, product.id)}><img className='card-img-top img-fluid border border-primary rounded' src={product.img} alt={product.modelo} /></a>
                     </div>
                     <div className='card-text'>
                       $ {product.precio}
