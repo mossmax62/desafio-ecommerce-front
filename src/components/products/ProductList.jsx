@@ -21,7 +21,7 @@ const ProductList = () => {
         <div className='container'>
           <div className='product-list'>
             <div className='row'>
-              {products.map(product => (
+              {products && products.length > 0 && products.map((product) => (
                 <div key={product.id} className='col-md-3 sm-6 mb-3'>
                   <div className='card text-center border border-primary rounded p-3'>
                     <div className='card-title'>
