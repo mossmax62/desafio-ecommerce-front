@@ -24,7 +24,7 @@ const AddProduct = () => {
     if (!stock) newErrors.stock = 'Stock is required'
     if (!img) newErrors.img = 'Image URL is required'
     if (!categoria) newErrors.categoria = 'Categoria is required'
-
+    console.log('Justo antes de validacio de add product')
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors)
       return
