@@ -11,12 +11,13 @@ const ProductContextProvider = ({ children }) => {
 
   const navigate = useNavigate()
 
-  useEffect(() => {
+  const BACKEND_URL = 'https://back-9x5b.onrender.com/'
 
+  useEffect(() => {
     // Solicitar productos desde el backend
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/products')
+        const response = await axios.get(BACKEND_URL + 'products')
         const fetchedProducts = response.data
 
         // Almacenar los productos recibidos en el estado
@@ -37,13 +38,13 @@ const ProductContextProvider = ({ children }) => {
   }, [products])
 
   const addProduct = (product) => {
-    axios.post('http://localhost:3000/products', product)
+    axios.post(BACKEND_URL + 'products', product)
       .then(response => setProducts([...products, response.data]))
       .catch(error => console.error('Error adding product:', error))
   }
 
   const updateProduct = (updatedProduct) => {
-    axios.put(`http://localhost:3000/products/${updatedProduct.id}`, updatedProduct)
+    axios.put(BACKEND_URL + `products/${updatedProduct.id}`, updatedProduct)
       .then(response => {
         setProducts(products.map(product =>
           product.id === updatedProduct.id ? response.data : product
@@ -53,7 +54,7 @@ const ProductContextProvider = ({ children }) => {
   }
 
   const deleteProduct = (id) => {
-    axios.delete(`http://localhost:3000/products/${id}`)
+    axios.delete(BACKEND_URL + `products/${id}`)
       .then(() => setProducts(products.filter(product => product.id !== id)))
       .catch(error => console.error('Error deleting product:', error))
   }

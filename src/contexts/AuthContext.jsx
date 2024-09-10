@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 const AuthContext = createContext()
 const localStorage = window.localStorage
-const BACKEND_URL = 'http://localhost:3000'
+const BACKEND_URL = 'https://back-9x5b.onrender.com/'
 
 export function AuthProvider ({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
