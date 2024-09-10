@@ -29,7 +29,7 @@ const AddProduct = () => {
       setErrors(newErrors)
       return
     }
-
+    console.log('Justo antes de add product')
     addProduct({
       modelo,
       marca,
