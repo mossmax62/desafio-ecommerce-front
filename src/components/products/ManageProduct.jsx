@@ -1,6 +1,6 @@
 import { useProducts } from '../../contexts/ProductContext'
-import PropTypes from 'prop-types';
-import './ManageProduct.css'; // Consider adding some CSS for styling
+import PropTypes from 'prop-types'
+import './ManageProduct.css' // Consider adding some CSS for styling
 
 const ManageProduct = ({ onEditProduct }) => {
   const { products, deleteProduct } = useProducts()
@@ -16,7 +16,7 @@ const ManageProduct = ({ onEditProduct }) => {
         {products.map((product) => (
           <div key={product.id} className='col-md-3 mb-3'>
             <div className='card'>
-              <img src={product.imagen_url} alt={product.modelo} className='card-img-top' />
+              <img src={product.img} alt={product.modelo} className='card-img-top' />
               <div className='card-body'>
                 <h5 className='card-title'>{product.marca} {product.modelo}</h5>
                 <p className='card-text'>Price: ${product.precio}</p>
@@ -27,12 +27,14 @@ const ManageProduct = ({ onEditProduct }) => {
                 <div className='btn-group' role='group'>
                   <button
                     onClick={() => onEditProduct(product)}
-                    className='btn btn-sm btn-primary'>
+                    className='btn btn-sm btn-primary'
+                  >
                     Edit
                   </button>
                   <button
                     onClick={() => deleteProduct(product.id)}
-                    className='btn btn-sm btn-danger'>
+                    className='btn btn-sm btn-danger'
+                  >
                     Delete
                   </button>
                 </div>

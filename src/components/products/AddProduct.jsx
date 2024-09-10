@@ -8,7 +8,7 @@ const AddProduct = () => {
   const [descripcion, setDescripcion] = useState('')
   const [precio, setPrecio] = useState('')
   const [stock, setStock] = useState('')
-  const [imagen_url, setImagenUrl] = useState('')
+  const [img, setImagenUrl] = useState('')
   const [categoria, setCategoria] = useState('')
   const [favorito, setFavorito] = useState(false)
   const [errors, setErrors] = useState({})
@@ -22,7 +22,7 @@ const AddProduct = () => {
     if (!descripcion) newErrors.descripcion = 'Descripcion is required'
     if (!precio) newErrors.precio = 'Precio is required'
     if (!stock) newErrors.stock = 'Stock is required'
-    if (!imagen_url) newErrors.imagen_url = 'Image URL is required'
+    if (!img) newErrors.img = 'Image URL is required'
     if (!categoria) newErrors.categoria = 'Categoria is required'
 
     if (Object.keys(newErrors).length > 0) {
@@ -36,7 +36,7 @@ const AddProduct = () => {
       descripcion,
       precio: parseFloat(precio), // Convert price to number
       stock: parseInt(stock, 10),
-      imagen_url,
+      img,
       categoria,
       favorito
     })
@@ -50,7 +50,7 @@ const AddProduct = () => {
     setCategoria('')
     setFavorito(false)
     setErrors({})
-  };
+  }
 
   return (
     <div className='container mt-4'>
@@ -113,12 +113,12 @@ const AddProduct = () => {
           <label htmlFor='productImageUrl' className='form-label'>Image URL</label>
           <input
             type='text'
-            className={`form-control ${errors.imagen_url ? 'is-invalid' : ''}`}
+            className={`form-control ${errors.img ? 'is-invalid' : ''}`}
             id='productImageUrl'
-            value={imagen_url}
+            value={img}
             onChange={(e) => setImagenUrl(e.target.value)}
           />
-          {errors.imagen_url && <div className='invalid-feedback'>{errors.imagen_url}</div>}
+          {errors.img && <div className='invalid-feedback'>{errors.img}</div>}
         </div>
 
         {/* Categoria */}
