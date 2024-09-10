@@ -61,19 +61,19 @@ const Navigation = () => {
                     {/* <Link to="/sign-up" className="nav-link btn btn-warning">Sign Up</Link> */}
                     Sign Up
                   </NavDropdown.Item>
-                </NavDropdown>
+                  </NavDropdown>
                 : <NavDropdown title='Mi cuenta' id='basic-nav-dropdown' className='nav-link btn btn-warning m-1 p-1'>
-                  <NavDropdown.Item href='/user-profile' className='nav-link btn btn-warning'>
+                  <NavDropdown.Item href='#/user-profile' className='nav-link btn btn-warning'>
                     Profile
                   </NavDropdown.Item>
-                  <NavDropdown.Item href='/manage-products' className='nav-link btn btn-warning'>
+                  <NavDropdown.Item href='#/manage-products' className='nav-link btn btn-warning'>
                     Manage Products
                   </NavDropdown.Item>
 
                   <NavDropdown.Item onClick={handleLogout} className='nav-link btn btn-warning'>
                     Sign Out
                   </NavDropdown.Item>
-                </NavDropdown>}
+                  </NavDropdown>}
               {/* <Link to="/sign-in" className="nav-link btn btn-warning">Sign In</Link>
                         <Link to="/sign-up" className="nav-link btn btn-warning">Sign Up</Link> */}
             </Nav>
