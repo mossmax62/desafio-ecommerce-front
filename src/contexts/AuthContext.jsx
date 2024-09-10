@@ -27,7 +27,7 @@ export function AuthProvider ({ children }) {
     setError(null)
 
     try {
-      const response = await axios.post(BACKEND_URL + '/login', { email, password })
+      const response = await axios.post(BACKEND_URL + 'login', { email, password })
 
       console.log(response)
       const token = response.data.token
@@ -65,7 +65,7 @@ export function AuthProvider ({ children }) {
     }
 
     try {
-      const response = await axios.post(BACKEND_URL + '/signup', {
+      const response = await axios.post(BACKEND_URL + 'signup', {
         nombre,
         apellido,
         email,
