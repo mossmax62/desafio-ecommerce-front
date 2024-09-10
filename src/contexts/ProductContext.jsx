@@ -38,6 +38,7 @@ const ProductContextProvider = ({ children }) => {
   }, [products])
 
   const addProduct = (product) => {
+    console.log(product)
     axios.post(BACKEND_URL + 'products', product)
       .then(response => setProducts([...products, response.data]))
       .catch(error => console.error('Error adding product:', error))
