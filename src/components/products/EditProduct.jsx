@@ -1,13 +1,8 @@
-// src/components/products/EditProduct.jsx
 import { useState, useEffect } from 'react'
 import { useProducts } from '../../contexts/ProductContext'
 import PropTypes from 'prop-types'
 
 const EditProduct = ({ productToEdit, onEditComplete }) => {
-  EditProduct.propTypes = {
-    productToEdit: PropTypes.object.isRequired,
-    onEditComplete: PropTypes.func.isRequired
-  }
   const { updateProduct } = useProducts()
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
@@ -25,15 +20,16 @@ const EditProduct = ({ productToEdit, onEditComplete }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(productToEdit)
-    console.log(name)
-    console.log(price)
-    productToEdit.name = name
-    productToEdit.price = price
-    productToEdit.make = make
-    productToEdit.model = model
-    console.log(productToEdit)
-    updateProduct(productToEdit)
+
+    const updatedProduct = {
+      ...productToEdit,
+      name,
+      price,
+      make,
+      model
+    }
+
+    updateProduct(updatedProduct)
     onEditComplete()
   }
 
@@ -46,7 +42,7 @@ const EditProduct = ({ productToEdit, onEditComplete }) => {
         type='text'
         placeholder='Maker'
         value={make}
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e) => setMake(e.target.value)}
       />
       <input
         type='text'
@@ -63,6 +59,11 @@ const EditProduct = ({ productToEdit, onEditComplete }) => {
       <button type='submit'>Update</button>
     </form>
   )
+}
+
+EditProduct.propTypes = {
+  productToEdit: PropTypes.object.isRequired,
+  onEditComplete: PropTypes.func.isRequired
 }
 
 export default EditProduct
