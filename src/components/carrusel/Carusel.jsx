@@ -16,7 +16,7 @@ const PhotoCarousel = () => {
             />
           </div>
           <Carousel.Caption>
-            <h3>MDF</h3>
+            <h2 className='display-1'>MDF</h2>
             <p>Tu próximo auto, más cerca de lo que imaginas</p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -30,7 +30,7 @@ const PhotoCarousel = () => {
             />
           </div>
           <Carousel.Caption>
-            <h3>Autos nuevos</h3>
+            <h2 className='display-1'>Autos nuevos</h2>
             <p>Sedanes, SUV, camionetas</p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -44,7 +44,7 @@ const PhotoCarousel = () => {
             />
           </div>
           <Carousel.Caption>
-            <h3>Autos usados</h3>
+            <h2 className='display-1'>Autos usados</h2>
             <p>Sedanes, SUV, camionetas</p>
           </Carousel.Caption>
         </Carousel.Item>
