@@ -2,10 +2,24 @@
     width: 100%; 
     margin: 0 auto; 
     padding-top: 20px; 
+    
   }
   
   .carousel img {
     height: 600px; 
     object-fit: cover; 
+    
+    width: 10;
+  }
+
+  .black-background{
+    opacity: 0.5;
+    background-color: black;
+  }
+
+  .transbox{
+  background-color: black;
+  border: 1px solid black;
+  opacity: 0.9;
   }
   

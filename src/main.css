@@ -18,7 +18,7 @@ body {
     align-items: center;
 }
 
-/* .rain-container {
+.rain-container {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -102,5 +102,5 @@ body {
     to {
         transform: translateY(100vh);
     }
-} */
+}
 
