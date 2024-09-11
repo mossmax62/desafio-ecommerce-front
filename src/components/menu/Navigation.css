@@ -1,7 +1,65 @@
 .logo {
     display: flex;
+    border-radius: 50%;
 }
 
-.navbar{
-    color: black;
-}
+nav {
+    background-color: #149c68; /* color2 */
+    padding: 10px;
+  }
+  
+  /* Estilos generales para los enlaces */
+.nav-link {
+    color: #fffedb; /* color5 */
+    /*background-color: #38c958; /* color3 */
+    /*padding: 10px 20px;
+    border-radius: 5px;*/
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+.nav-link:hover {
+    background-color: #aee637; /* color4 */
+    color: #fffedb; /* color1 */
+  }
+
+.btn {
+    /*background-color: #aee637; /* color4 */
+    color: #383939; /* color1 */
+    border: none;
+    padding: 5px 10px;
+    font-weight: bold;
+  }
+  
+.btn:hover {
+    background-color: #38c958; /* color3 */
+    color: #fffedb; /* color5 */
+  }
+  
+.nav-dropdown .nav-link {
+    color: #383939; /* color1 */
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+  }
+  
+.nav-dropdown .nav-link:hover {
+    background-color: #149c68; /* color2 */
+    color: #fffedb; /* color5 */
+  }
+  
+  /* Estilos para los ítems del NavDropdown */
+.nav-dropdown-item {
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #fffedb; /* color5 */
+    color: #383939; /* color1 */
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+  
+.nav-dropdown-item:hover {
+    background-color: #38c958; /* color3 */
+    color: #383939; /* color1 */
+  }

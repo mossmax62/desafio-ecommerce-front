@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useProducts } from '../../contexts/ProductContext'
+import { useAuth } from '../../contexts/AuthContext'
 import PropTypes from 'prop-types'
+import Swal from 'sweetalert2'
 
 const EditProduct = ({ productToEdit, onEditComplete }) => {
   const { updateProduct } = useProducts()
+  const { token } = useAuth()
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [make, setMake] = useState('')
@@ -18,7 +21,7 @@ const EditProduct = ({ productToEdit, onEditComplete }) => {
     }
   }, [productToEdit])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     const updatedProduct = {
@@ -29,8 +32,23 @@ const EditProduct = ({ productToEdit, onEditComplete }) => {
       model
     }
 
-    updateProduct(updatedProduct)
-    onEditComplete()
+    try {
+      await updateProduct(updatedProduct, token)
+      Swal.fire({
+        title: 'Producto actualizado',
+        text: 'El producto se ha actualizado correctamente.',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      onEditComplete()
+    } catch (error) {
+      Swal.fire({
+        title: 'Error',
+        text: 'No se pudo actualizar el producto.',
+        icon: 'error'
+      })
+    }
   }
 
   if (!productToEdit) return null
