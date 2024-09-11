@@ -25,7 +25,7 @@ const ProductContextProvider = ({ children }) => {
         // Almacenar los productos recibidos en el estado
         setProducts(fetchedProducts)
         // Guardar los productos en localStorage
-        localStorage.setItem('products', JSON.stringify(fetchedProducts))
+        window.localStorage.setItem('products', JSON.stringify(fetchedProducts))
       } catch (error) {
         console.error('Error fetching products:', error)
       }
@@ -47,9 +47,13 @@ const ProductContextProvider = ({ children }) => {
     })
   }
 
-  const addProduct = (product) => {
+  const addProduct = (product, token) => {
     console.log(product)
-    axios.post(BACKEND_URL + 'products', product)
+    axios.post(BACKEND_URL + 'products', product, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then(response => {
         setProducts([...products, response.data])
         handleAddSwal()
@@ -57,8 +61,12 @@ const ProductContextProvider = ({ children }) => {
       .catch(error => console.error('Error adding product:', error))
   }
 
-  const updateProduct = (updatedProduct) => {
-    axios.put(BACKEND_URL + `products/${updatedProduct.id}`, updatedProduct)
+  const updateProduct = (updatedProduct, token) => {
+    axios.put(BACKEND_URL + `products/${updatedProduct.id}`, updatedProduct, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then(response => {
         setProducts(products.map(product =>
           product.id === updatedProduct.id ? response.data : product
@@ -66,6 +74,7 @@ const ProductContextProvider = ({ children }) => {
       })
       .catch(error => console.error('Error updating product:', error))
   }
+
   function handleRemoveSwal () {
     Swal.fire({
       title: 'Producto eliminado',
@@ -73,8 +82,13 @@ const ProductContextProvider = ({ children }) => {
       icon: 'success'
     })
   }
-  const deleteProduct = (id) => {
-    axios.delete(BACKEND_URL + `products/${id}`)
+
+  const deleteProduct = (id, token) => {
+    axios.delete(BACKEND_URL + `products/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then(() => {
         setProducts(products.filter(product => product.id !== id))
         handleRemoveSwal()
