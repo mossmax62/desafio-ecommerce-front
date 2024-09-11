@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export const ProductContext = createContext()
 
@@ -12,6 +13,7 @@ const ProductContextProvider = ({ children }) => {
   const navigate = useNavigate()
 
   const BACKEND_URL = 'https://back-9x5b.onrender.com/'
+  /* const BACKEND_URL = 'http://localhost:3000/' */
 
   useEffect(() => {
     // Solicitar productos desde el backend
@@ -37,10 +39,21 @@ const ProductContextProvider = ({ children }) => {
     window.localStorage.setItem('products', JSON.stringify(products))
   }, [products])
 
+  function handleAddSwal () {
+    Swal.fire({
+      title: 'Nuevo producto agregado',
+      text: 'Excelente decisión!',
+      icon: 'success'
+    })
+  }
+
   const addProduct = (product) => {
     console.log(product)
     axios.post(BACKEND_URL + 'products', product)
-      .then(response => setProducts([...products, response.data]))
+      .then(response => {
+        setProducts([...products, response.data])
+        handleAddSwal()
+      })
       .catch(error => console.error('Error adding product:', error))
   }
 
@@ -53,10 +66,19 @@ const ProductContextProvider = ({ children }) => {
       })
       .catch(error => console.error('Error updating product:', error))
   }
-
+  function handleRemoveSwal () {
+    Swal.fire({
+      title: 'Producto eliminado',
+      text: 'Por favor continua administrando tus publicaciones.',
+      icon: 'success'
+    })
+  }
   const deleteProduct = (id) => {
     axios.delete(BACKEND_URL + `products/${id}`)
-      .then(() => setProducts(products.filter(product => product.id !== id)))
+      .then(() => {
+        setProducts(products.filter(product => product.id !== id))
+        handleRemoveSwal()
+      })
       .catch(error => console.error('Error deleting product:', error))
   }
 

@@ -36,7 +36,7 @@ const Navigation = () => {
 
   return (
     <>
-      <Navbar className='nav' expand='lg'>
+      <Navbar className='navbar  bg-primary' expand='lg'>
         <Container>
           <Navbar.Brand href='/'> <img src={Logo} width='150' height='60' alt='logo' className='d-inline-block align-top border rounded' /></Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -53,7 +53,7 @@ const Navigation = () => {
               <Link to='/shopping-cart' className='nav-link btn btn-warning m-1'><CartIcon itemCount={totalProductos} /></Link>
 
               {!isAuthenticated
-                ? <NavDropdown title='Acceso' id='basic-nav-dropdown' className='nav-link btn btn-warning m-1 p-1'>
+                ? <NavDropdown title='Acceso' id='basic-nav-dropdown' className='btn btn-warning m-1 p-1'>
                   <NavDropdown.Item href='#/sign-in' className='nav-link btn btn-warning'>
                     Sign In
                   </NavDropdown.Item>
@@ -61,8 +61,8 @@ const Navigation = () => {
                     {/* <Link to="/sign-up" className="nav-link btn btn-warning">Sign Up</Link> */}
                     Sign Up
                   </NavDropdown.Item>
-                </NavDropdown>
-                : <NavDropdown title='Mi cuenta' id='basic-nav-dropdown' className='nav-link btn btn-warning m-1 p-1'>
+                  </NavDropdown>
+                : <NavDropdown title='Mi cuenta' id='basic-nav-dropdown' className='btn btn-warning m-1 p-1'>
                   <NavDropdown.Item href='#/user-profile' className='nav-link btn btn-warning'>
                     Profile
                   </NavDropdown.Item>
@@ -73,7 +73,7 @@ const Navigation = () => {
                   <NavDropdown.Item onClick={handleLogout} className='nav-link btn btn-warning'>
                     Sign Out
                   </NavDropdown.Item>
-                </NavDropdown>}
+                  </NavDropdown>}
               {/* <Link to="/sign-in" className="nav-link btn btn-warning">Sign In</Link>
                         <Link to="/sign-up" className="nav-link btn btn-warning">Sign Up</Link> */}
             </Nav>

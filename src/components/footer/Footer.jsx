@@ -1,13 +1,11 @@
 import React from 'react'
-import { FaFacebook } from "react-icons/fa"
-import { FaTwitter } from "react-icons/fa"
-import { AiFillInstagram } from "react-icons/ai"
-import { FaLinkedin } from "react-icons/fa"
+import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa'
+import { AiFillInstagram } from 'react-icons/ai'
 import './Footer.css'
 
 const Footer = () => {
   return (
-    <footer className='footer'>
+    <footer className='navbar navbar-dark bg-primary'>
       <div className='footer-content'>
         <div className='company-info'>
           <h2>MDF</h2>

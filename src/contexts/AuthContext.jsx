@@ -1,11 +1,13 @@
 // AuthContext.js
-import { createContext, useState, useContext, useEffect } from 'react'
+import { createContext, useState, useContext } from 'react'
 import axios from 'axios'
 import PropTypes from 'prop-types'
+import Swal from 'sweetalert2'
 
 const AuthContext = createContext()
 const localStorage = window.localStorage
 const BACKEND_URL = 'https://back-9x5b.onrender.com/'
+/* const BACKEND_URL = 'http://localhost:3000/' */
 
 export function AuthProvider ({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
@@ -20,6 +22,22 @@ export function AuthProvider ({ children }) {
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+
+  function handleLoginSwal () {
+    Swal.fire({
+      title: 'Bienvenido',
+      text: 'Que tengas una feliz experiencia de compra',
+      icon: 'success'
+    })
+  }
+
+  function handleSignUpSwal () {
+    Swal.fire({
+      title: 'Tu cuenta ha sido creada',
+      text: 'Bienvenido y que tengas una feliz experiencia en nuestra tienda',
+      icon: 'success'
+    })
+  }
 
   // Login Function
   const login = async (email, password) => {
@@ -44,6 +62,7 @@ export function AuthProvider ({ children }) {
       setCurrentUser(userData)
 
       // Successful login
+      handleLoginSwal()
       return true
     } catch (error) {
       setError(error.response.data.message)
@@ -78,6 +97,7 @@ export function AuthProvider ({ children }) {
         const newUser = response.data.user // Assuming the backend returns the created user data
         localStorage.setItem('currentUser', JSON.stringify(newUser))
         setCurrentUser(newUser)
+        handleSignUpSwal()
         return true
       } else {
         // Handle non-201 status codes if needed

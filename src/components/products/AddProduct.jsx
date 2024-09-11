@@ -25,10 +25,10 @@ const AddProduct = () => {
     if (!img) newErrors.img = 'Image URL is required'
     if (!categoria) newErrors.categoria = 'Categoria is required'
     console.log('Justo antes de validacio de add product')
-    /* if (Object.keys(newErrors).length > 0) {
+    if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors)
       return
-    } */
+    }
     console.log('Justo antes de add product')
     addProduct({
       modelo,
@@ -78,6 +78,19 @@ const AddProduct = () => {
             id='productMarca'
             value={marca}
             onChange={(e) => setMarca(e.target.value)}
+          />
+          {errors.marca && <div className='invalid-feedback'>{errors.marca}</div>}
+        </div>
+
+        {/* Descripcion */}
+        <div className='col-md-6'>
+          <label htmlFor='productDescripcion' className='form-label'>Descripción</label>
+          <input
+            type='text'
+            className={`form-control ${errors.descripcion ? 'is-invalid' : ''}`}
+            id='productDescripcion'
+            value={descripcion}
+            onChange={(e) => setDescripcion(e.target.value)}
           />
           {errors.marca && <div className='invalid-feedback'>{errors.marca}</div>}
         </div>

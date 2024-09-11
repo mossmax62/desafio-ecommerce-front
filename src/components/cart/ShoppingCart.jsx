@@ -2,7 +2,7 @@ import { useCart } from '../../contexts/CartContext'
 import '../products/ProductList.css'
 
 const ShoppingCart = () => {
-  const { cart, clearCart, addToCart, removeFromCart } = useCart()
+  const { cart, clearCart, addToCart, removeFromCart, buyCart } = useCart()
   return (
     <div className='container'>
       <div>
@@ -24,8 +24,10 @@ const ShoppingCart = () => {
                 <div className='card-text'>
                   $ {product.precio * product.quantity}
                 </div>
-                <button onClick={() => addToCart(product)} className='btn btn-primary'>Add more</button>
-                <button onClick={() => removeFromCart(product.id)} className='btn btn-danger'>Remove</button>
+                <div>
+                  <button onClick={() => addToCart(product)} className='btn btn-primary'>Add more</button>
+                  <button onClick={() => removeFromCart(product.id)} className='btn btn-danger'>Remove</button>
+                </div>
               </div>
 
             ))}
@@ -35,6 +37,7 @@ const ShoppingCart = () => {
             <h3>Total de productos: $ {cart.reduce((total, product) => total + product.quantity, 0)}</h3>
             <h3 className='text-success'>Total del carro: $ {cart.reduce((total, product) => total + product.precio * product.quantity, 0)}</h3>
             <button onClick={clearCart} className='btn btn-danger'>Clear Cart</button>
+            <button onClick={buyCart} className='btn btn-success'>Procesar la compra</button>
           </div>
         </div>
       </div>
