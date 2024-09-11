@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useProducts } from '../../contexts/ProductContext'
+import Swal from 'sweetalert2'
 
 const AddProduct = () => {
   const { addProduct } = useProducts()
@@ -20,16 +21,21 @@ const AddProduct = () => {
     if (!modelo) newErrors.modelo = 'Modelo is required'
     if (!marca) newErrors.marca = 'Marca is required'
     if (!descripcion) newErrors.descripcion = 'Descripcion is required'
-    if (!precio) newErrors.precio = 'Precio is required'
-    if (!stock) newErrors.stock = 'Stock is required'
+    if (!precio || isNaN(parseFloat(precio))) newErrors.precio = 'Precio must be a valid number'
+    if (!stock || isNaN(parseInt(stock))) newErrors.stock = 'Stock must be a valid number'
     if (!img) newErrors.img = 'Image URL is required'
     if (!categoria) newErrors.categoria = 'Categoria is required'
-    console.log('Justo antes de validacio de add product')
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors)
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Please fill out all required fields.'
+      })
       return
     }
-    console.log('Justo antes de add product')
+
     addProduct({
       modelo,
       marca,
@@ -39,6 +45,14 @@ const AddProduct = () => {
       img,
       categoria,
       favorito
+    })
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Producto añadido',
+      text: 'El producto se ha añadido correctamente.',
+      showConfirmButton: false,
+      timer: 1500
     })
 
     setModelo('')
@@ -92,7 +106,7 @@ const AddProduct = () => {
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
           />
-          {errors.marca && <div className='invalid-feedback'>{errors.marca}</div>}
+          {errors.descripcion && <div className='invalid-feedback'>{errors.descripcion}</div>}
         </div>
 
         {/* Precio */}
@@ -136,14 +150,18 @@ const AddProduct = () => {
 
         {/* Categoria */}
         <div className='col-md-12'>
-          <label htmlFor='productCategoria' className='form-label'>Categoria</label>
-          <input
-            type='text'
+          <select
             className={`form-control ${errors.categoria ? 'is-invalid' : ''}`}
             id='productCategoria'
             value={categoria}
             onChange={(e) => setCategoria(e.target.value)}
-          />
+          >
+            <option value=''>Seleccione una categoría</option>
+            <option value='SUV'>SUV</option>
+            <option value='Sedan'>Sedan</option>
+            <option value='Camioneta'>Camioneta</option>
+          </select>
+
           {errors.categoria && <div className='invalid-feedback'>{errors.categoria}</div>}
         </div>
 

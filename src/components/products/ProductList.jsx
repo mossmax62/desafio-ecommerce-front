@@ -1,5 +1,6 @@
 import { ProductContext, useProducts } from '../../contexts/ProductContext'
 import { useCart } from '../../contexts/CartContext'
+import { useAuth } from '../../contexts/AuthContext'
 import IconHeart from '../fav/IconHeart'
 import './ProductList.css'
 import { useContext } from 'react'
@@ -7,12 +8,25 @@ import { useContext } from 'react'
 const ProductList = () => {
   const { products, toggleLike, isLiked } = useProducts()
   const { addToCart } = useCart()
+  const { isAuthenticated } = useAuth()
 
   // Función para manejar el like y dislike
   const handleLike = (productId) => {
-    toggleLike(productId)
+    if (isAuthenticated) {
+      toggleLike(productId)
+    } else {
+      alert('Debes iniciar sesión para dar "like" a un producto.')
+    }
   }
-  console.log(products)
+
+  const handleAddToCart = (product) => {
+    if (isAuthenticated) {
+      addToCart(product)
+    } else {
+      alert('Debes iniciar sesión para agregar productos al carrito.')
+    }
+  }
+
   const { handleSeeSelectedCar } = useContext(ProductContext)
 
   return (
@@ -29,7 +43,9 @@ const ProductList = () => {
                       <h2>{product.modelo}</h2>
                     </div>
                     <div className='card-body'>
-                      <a href='' onClick={() => handleSeeSelectedCar(event, product.id)}><img className='card-img-top img-fluid border border-primary rounded' src={product.img} alt={product.modelo} /></a>
+                      <a href='' onClick={() => handleSeeSelectedCar(event, product.id)}>
+                        <img className='card-img-top img-fluid border border-primary rounded' src={product.img} alt={product.modelo} />
+                      </a>
                     </div>
                     <div className='card-text'>
                       $ {product.precio}
@@ -40,15 +56,14 @@ const ProductList = () => {
                         filled={isLiked(product.id)}
                       />
                     </div>
-                  &nbsp;
-                    <button onClick={() => addToCart(product)} className='btn btn-primary'>Add to Cart</button>
+                    &nbsp;
+                    <button onClick={() => handleAddToCart(product)} className='btn btn-primary'>Add to Cart</button>
                   </div>
                 </div>
               ))}
             </div>
           </div>
         </div>
-
       </div>
     </>
   )

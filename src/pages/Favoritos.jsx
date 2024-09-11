@@ -1,19 +1,33 @@
 import React from 'react'
 import { useProducts } from '../contexts/ProductContext'
 import { useCart } from '../contexts/CartContext'
+import { useAuth } from '../contexts/AuthContext' // Importamos el contexto de autenticación
 import IconHeart from '../components/fav/IconHeart'
 import '../components/products/ProductList'
 
 const Favoritos = () => {
   const { products, toggleLike, isLiked } = useProducts()
   const { addToCart } = useCart()
+  const { isAuthenticated } = useAuth() // Usamos el estado de autenticación
 
   // Filtra los productos que tienen un like
   const favoriteProducts = products.filter(product => isLiked(product.id))
 
   // Función para manejar el like y dislike
   const handleLike = (productId) => {
-    toggleLike(productId)
+    if (isAuthenticated) {
+      toggleLike(productId)
+    } else {
+      alert('Debes iniciar sesión para dar "like" a un producto.')
+    }
+  }
+
+  const handleAddToCart = (product) => {
+    if (isAuthenticated) {
+      addToCart(product)
+    } else {
+      alert('Debes iniciar sesión para agregar productos al carrito.')
+    }
   }
 
   return (
@@ -42,14 +56,15 @@ const Favoritos = () => {
                     />
                   </div>
                   &nbsp;
-                  <button onClick={() => addToCart(product)} className='btn'>Add to Cart</button>
+                  <button onClick={() => handleAddToCart(product)} className='btn'>Add to Cart</button>
                 </div>
               </div>
             ))}
           </div>
-      </div>
-          )
-        : (<p>No hay favoritos</p>)}
+        </div>)
+        : (
+          <p>No hay favoritos</p>
+          )}
     </div>
   )
 }
