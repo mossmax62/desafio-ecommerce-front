@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { useProducts } from '../../contexts/ProductContext'
+import { useAuth } from '../../contexts/AuthContext'
 import Swal from 'sweetalert2'
 
 const AddProduct = () => {
   const { addProduct } = useProducts()
+  const { token } = useAuth()
   const [modelo, setModelo] = useState('')
   const [marca, setMarca] = useState('')
   const [descripcion, setDescripcion] = useState('')
@@ -14,7 +16,7 @@ const AddProduct = () => {
   const [favorito, setFavorito] = useState(false)
   const [errors, setErrors] = useState({})
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     const newErrors = {}
@@ -36,34 +38,43 @@ const AddProduct = () => {
       return
     }
 
-    addProduct({
-      modelo,
-      marca,
-      descripcion,
-      precio: parseFloat(precio), // Convert price to number
-      stock: parseInt(stock, 10),
-      img,
-      categoria,
-      favorito
-    })
+    try {
+      await addProduct({
+        modelo,
+        marca,
+        descripcion,
+        precio: parseFloat(precio),
+        stock: parseInt(stock, 10),
+        img,
+        categoria,
+        favorito
+      }, token)
 
-    Swal.fire({
-      icon: 'success',
-      title: 'Producto añadido',
-      text: 'El producto se ha añadido correctamente.',
-      showConfirmButton: false,
-      timer: 1500
-    })
+      Swal.fire({
+        icon: 'success',
+        title: 'Producto añadido',
+        text: 'El producto se ha añadido correctamente.',
+        showConfirmButton: false,
+        timer: 1500
+      })
 
-    setModelo('')
-    setMarca('')
-    setDescripcion('')
-    setPrecio('')
-    setStock('')
-    setImagenUrl('')
-    setCategoria('')
-    setFavorito(false)
-    setErrors({})
+      setModelo('')
+      setMarca('')
+      setDescripcion('')
+      setPrecio('')
+      setStock('')
+      setImagenUrl('')
+      setCategoria('')
+      setFavorito(false)
+      setErrors({})
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No se pudo añadir el producto. Verifica los datos.'
+      })
+      console.error('Error adding product:', error)
+    }
   }
 
   return (

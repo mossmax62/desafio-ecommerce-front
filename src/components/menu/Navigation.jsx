@@ -2,11 +2,12 @@ import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import FavoriteHeart from './FavoriteHeart'
 import CartIcon from './CartIcon'
-import Logo from '../../assets/img/MDF2.jpeg'
+import Logo from '../../assets/img/logo.png'
 import { useAuth } from '../../contexts/AuthContext'
 import { useCart } from '../../contexts/CartContext'
 import { useProducts } from '../../contexts/ProductContext'
 import SearchBar from '../../components/searchBar/SearchBar'
+import './Navigation.css'
 
 const Navigation = () => {
   const { isAuthenticated, logout } = useAuth()
@@ -36,9 +37,9 @@ const Navigation = () => {
 
   return (
     <>
-      <Navbar className='navbar  bg-primary' expand='lg'>
+      <Navbar className='navbar' expand='lg'>
         <Container>
-          <Navbar.Brand href='/'> <img src={Logo} width='150' height='60' alt='logo' className='d-inline-block align-top border rounded' /></Navbar.Brand>
+          <Navbar.Brand href='/'> <img src={Logo} width='90' height='90' alt='logo' className='d-inline-block align-top' /></Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <div className='w-100 d-flex justify-content-center'>
@@ -48,29 +49,29 @@ const Navigation = () => {
               className='ms-auto'
               navbarScroll
             >
-              <Link to='/' className='nav-link btn btn-warning m-1'>Inicio</Link>
-              <Link to='/favoritos' className='nav-link btn btn-warning m-1'><FavoriteHeart count={totalFavoritos} /> </Link>
-              <Link to='/shopping-cart' className='nav-link btn btn-warning m-1'><CartIcon itemCount={totalProductos} /></Link>
+              <Link to='/' className='nav-link btn m-1'>Inicio</Link>
+              <Link to='/favoritos' className='nav-link btn m-1'><FavoriteHeart count={totalFavoritos} /> </Link>
+              <Link to='/shopping-cart' className='nav-link btn m-1'><CartIcon itemCount={totalProductos} /></Link>
 
               {!isAuthenticated
-                ? <NavDropdown title='Acceso' id='basic-nav-dropdown' className='btn btn-warning m-1 p-1'>
+                ? <NavDropdown title='Acceso' id='basic-nav-dropdown' className='btn m-1 p-1'>
                   <NavDropdown.Item href='#/sign-in' className='nav-link btn btn-warning'>
                     Sign In
                   </NavDropdown.Item>
-                  <NavDropdown.Item href='#/sign-up' className='nav-link btn btn-warning'>
+                  <NavDropdown.Item href='#/sign-up' className='nav-link btn'>
                     {/* <Link to="/sign-up" className="nav-link btn btn-warning">Sign Up</Link> */}
                     Sign Up
                   </NavDropdown.Item>
                   </NavDropdown>
-                : <NavDropdown title='Mi cuenta' id='basic-nav-dropdown' className='btn btn-warning m-1 p-1'>
+                : <NavDropdown title='Mi cuenta' id='basic-nav-dropdown' className='btn m-1 p-1'>
                   <NavDropdown.Item href='#/user-profile' className='nav-link btn btn-warning'>
                     Profile
                   </NavDropdown.Item>
-                  <NavDropdown.Item href='#/manage-products' className='nav-link btn btn-warning'>
+                  <NavDropdown.Item href='#/manage-products' className='nav-link btn'>
                     Manage Products
                   </NavDropdown.Item>
 
-                  <NavDropdown.Item onClick={handleLogout} className='nav-link btn btn-warning'>
+                  <NavDropdown.Item onClick={handleLogout} className='nav-link btn'>
                     Sign Out
                   </NavDropdown.Item>
                   </NavDropdown>}
