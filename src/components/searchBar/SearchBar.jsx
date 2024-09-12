@@ -12,14 +12,10 @@ const SearchBar = () => {
     setBusqueda(value)
     if (value) {
       const filtered = products.filter((product) =>
-        product.make.toLowerCase().includes(value.toLowerCase()) ||
-        product.model.toLowerCase().includes(value.toLowerCase()) ||
-        product.year.toString().includes(value) ||
-        product.color.toLowerCase().includes(value.toLowerCase()) ||
-        product.mileage.toString().includes(value) ||
-        product.price.toString().includes(value) ||
-        product.fuelType.toLowerCase().includes(value.toLowerCase()) ||
-        product.transmission.toLowerCase().includes(value.toLowerCase())
+        product.marca.toLowerCase().includes(value.toLowerCase()) ||
+        product.modelo.toLowerCase().includes(value.toLowerCase()) ||
+        product.categoria.toLowerCase().includes(value.toLowerCase()) ||
+        product.precio.toString().includes(value)
       )
       setSugerencias(filtered)
     } else {
@@ -52,15 +48,14 @@ const SearchBar = () => {
           {sugerencias.map((sugerencia) => (
             <li className='list-group-item p-2 d-flex justify-content-evenly' key={sugerencia.id} onClick={() => handleSelection(event, sugerencia.id)}>
               <div className='d-flex align-items-center'>
-                <img className='li-image' src={sugerencia.image} alt={sugerencia.model} />
+                <img className='li-image' src={sugerencia.img} alt={sugerencia.modelo} />
               </div>
               <div className='d-flex align-items-center ms-3'>
                 <ul className='list-group list-group-flush'>
-                  <li className='list-group-item active p-1'><span className='fw-bold'> Make:</span> {sugerencia.make}</li>
-                  <li className='list-group-item p-1'><span className='fw-bold'> Model:</span> {sugerencia.model}</li>
-                  <li className='list-group-item p-1'><span className='fw-bold'> Year:</span> {sugerencia.year}</li>
-                  <li className='list-group-item p-1'><span className='fw-bold'> Transmission:</span> {sugerencia.transmission}</li>
-                  <li className='list-group-item p-1'><span className='fw-bold'> Price:</span> {sugerencia.price}</li>
+                  <li className='list-group-item active p-1'><span className='fw-bold'> Marca:</span> {sugerencia.marca}</li>
+                  <li className='list-group-item p-1'><span className='fw-bold'> Modelo:</span> {sugerencia.modelo}</li>
+                  <li className='list-group-item p-1'><span className='fw-bold'> Categoria:</span> {sugerencia.categoria}</li>
+                  <li className='list-group-item p-1'><span className='fw-bold'> Precio:</span> {sugerencia.precio}</li>
                 </ul>
               </div>
             </li>
