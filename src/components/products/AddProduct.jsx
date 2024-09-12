@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useProducts } from '../../contexts/ProductContext'
 import { useAuth } from '../../contexts/AuthContext'
 import Swal from 'sweetalert2'
+import './AddProduct.css'
 
 const AddProduct = () => {
   const { addProduct } = useProducts()

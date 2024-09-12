@@ -15,6 +15,7 @@ export function AuthProvider ({ children }) {
     const storedAuth = localStorage.getItem('isAuthenticated')
     return storedAuth ? JSON.parse(storedAuth) : false
   })
+
   const [currentUser, setCurrentUser] = useState(() => {
     // Check localStorage for current user on mount
     const storedUser = localStorage.getItem('currentUser')
@@ -67,12 +68,9 @@ export function AuthProvider ({ children }) {
     } catch (error) {
       setError(error.response.data.message)
       console.error('Login error:', error)
-      setLoading(false)
 
       // Failed login
       throw new Error(error.response.data.message)
-    } finally {
-      setLoading(false)
     }
   }
 

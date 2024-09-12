@@ -5,7 +5,7 @@ import './Footer.css'
 
 const Footer = () => {
   return (
-    <footer className='navbar navbar-dark bg-primary'>
+    <footer className='navbar navbar-dark '>
       <div className='footer-content'>
         <div className='company-info'>
           <h2>MDF</h2>
@@ -36,10 +36,11 @@ const Footer = () => {
             </li>
           </ul>
         </div>
+        <div className='footer-bottom'>
+          <p>&copy; 2024 MDF. Todos los derechos reservados.</p>
+        </div>
       </div>
-      <div className='footer-bottom'>
-        <p>&copy; 2024 MDF. Todos los derechos reservados.</p>
-      </div>
+
     </footer>
   )
 }

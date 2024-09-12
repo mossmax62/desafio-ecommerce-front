@@ -11,7 +11,7 @@ const PhotoCarousel = () => {
           <div className='transbox'>
             <img
               className='d-block w-100 black-background'
-              src='https://sergioescobar.cl/wp-content/uploads/2021/10/Reserva-auto-min.jpg'
+              src='../src/assets/img/banner1.png'
               alt='First slide'
             />
           </div>
@@ -25,7 +25,7 @@ const PhotoCarousel = () => {
           <div className='transbox'>
             <img
               className='d-block w-100 black-background'
-              src='https://acnews.blob.core.windows.net/imgnews/medium/NAZ_15261624c77b45fda2a1c8632061099a.jpg'
+              src='../src/assets/img/banner2.png'
               alt='Second slide'
             />
           </div>
@@ -39,7 +39,7 @@ const PhotoCarousel = () => {
           <div className='transbox'>
             <img
               className='d-block w-100 black-background'
-              src='https://lh4.googleusercontent.com/proxy/Vsm5h0Amwc-cOhN5XI4189jkHM9ingzGLj36M0XVLdQ-gx2hAyg7OrRhKKp8P1xumyz6wAtjawVeKOQovPGGb3xZ2pRUaaughGSDdv0GJZxZi_mz_ui3xQWwOYFCTZyOFkjYUpN-zQYGxJFmpY_Uw-2O5inL_0S-lMnGN51QsSXuQuqyJKL7UwFWTuNTPEii6LQhysBjqZm8Hgeeo_rQ315xI3TUSg'
+              src='../src/assets/img/banner3.png'
               alt='Third slide'
             />
           </div>

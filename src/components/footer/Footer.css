@@ -1,14 +1,19 @@
 .footer {
-    background-color: #2b4c7e;
+    background-color: white;
     color: #dce0e6;
     padding: 5px 0;
     text-align: center;
+  }
+
+  .navbar{
+    background-color: #149c68; /* color2 */
   }
   
   .footer-content {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
     max-width: 1200px;
     gap: 50px;
     margin: 0 auto;
@@ -29,12 +34,12 @@
   }
   
   .social-links a {
-    color: #606d80;
+    color: white;
     text-decoration: none;
   }
   
   .social-links a:hover {
-    color: #567ebb;
+    color: #639cf2;
   }
   
   .footer-bottom {
