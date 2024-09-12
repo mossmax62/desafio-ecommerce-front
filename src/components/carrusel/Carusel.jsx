@@ -11,7 +11,7 @@ const PhotoCarousel = () => {
           <div className='transbox'>
             <img
               className='d-block w-100 black-background'
-              src='../src/assets/img/banner1.png'
+              src='assets/img/banner1.png'
               alt='First slide'
             />
           </div>
@@ -25,7 +25,7 @@ const PhotoCarousel = () => {
           <div className='transbox'>
             <img
               className='d-block w-100 black-background'
-              src='../src/assets/img/banner2.png'
+              src='assets/img/banner2.png'
               alt='Second slide'
             />
           </div>
@@ -39,7 +39,7 @@ const PhotoCarousel = () => {
           <div className='transbox'>
             <img
               className='d-block w-100 black-background'
-              src='../src/assets/img/banner3.png'
+              src='assets/img/banner3.png'
               alt='Third slide'
             />
           </div>
