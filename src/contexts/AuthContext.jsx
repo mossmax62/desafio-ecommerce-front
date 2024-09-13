@@ -6,8 +6,8 @@ import Swal from 'sweetalert2'
 
 const AuthContext = createContext()
 const localStorage = window.localStorage
-const BACKEND_URL = 'https://back-9x5b.onrender.com/'
-/* const BACKEND_URL = 'http://localhost:3000/' */
+// const BACKEND_URL = 'https://back-9x5b.onrender.com/'
+const BACKEND_URL = 'http://localhost:3000/'
 
 export function AuthProvider ({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
@@ -21,6 +21,7 @@ export function AuthProvider ({ children }) {
     const storedUser = localStorage.getItem('currentUser')
     return storedUser ? JSON.parse(storedUser) : null
   })
+  const token = localStorage.getItem('token')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
@@ -121,7 +122,7 @@ export function AuthProvider ({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout, signup, currentUser }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout, signup, currentUser, token }}>
       {children}
     </AuthContext.Provider>
   )
