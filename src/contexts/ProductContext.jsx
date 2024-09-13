@@ -12,8 +12,8 @@ const ProductContextProvider = ({ children }) => {
 
   const navigate = useNavigate()
 
-  // const BACKEND_URL = 'https://back-9x5b.onrender.com/'
-  const BACKEND_URL = 'http://localhost:3000/'
+  const BACKEND_URL = 'https://back-9x5b.onrender.com/'
+  // const BACKEND_URL = 'http://localhost:3000/'
 
   useEffect(() => {
     // Solicitar productos desde el backend
