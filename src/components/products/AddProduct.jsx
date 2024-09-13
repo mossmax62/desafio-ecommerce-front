@@ -50,7 +50,6 @@ const AddProduct = () => {
         categoria,
         favorito
       }, token)
-
       Swal.fire({
         icon: 'success',
         title: 'Producto añadido',
@@ -58,7 +57,6 @@ const AddProduct = () => {
         showConfirmButton: false,
         timer: 1500
       })
-
       setModelo('')
       setMarca('')
       setDescripcion('')

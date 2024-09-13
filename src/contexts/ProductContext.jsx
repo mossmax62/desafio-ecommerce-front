@@ -13,7 +13,7 @@ const ProductContextProvider = ({ children }) => {
   const navigate = useNavigate()
 
   const BACKEND_URL = 'https://back-9x5b.onrender.com/'
-  /* const BACKEND_URL = 'http://localhost:3000/' */
+  // const BACKEND_URL = 'http://localhost:3000/'
 
   useEffect(() => {
     // Solicitar productos desde el backend
@@ -39,7 +39,7 @@ const ProductContextProvider = ({ children }) => {
     window.localStorage.setItem('products', JSON.stringify(products))
   }, [products])
 
-  function handleAddSwal () {
+  function handleAddSwal() {
     Swal.fire({
       title: 'Nuevo producto agregado',
       text: 'Excelente decisión!',
@@ -58,7 +58,18 @@ const ProductContextProvider = ({ children }) => {
         setProducts([...products, response.data])
         handleAddSwal()
       })
-      .catch(error => console.error('Error adding product:', error))
+      .catch(error => {
+        if (error.response) {
+          // El servidor respondió con un código de estado diferente de 2xx
+          console.error('Error en la respuesta:', error.response.data)
+        } else if (error.request) {
+          // La solicitud fue hecha pero no hubo respuesta
+          console.error('Error en la solicitud:', error.request)
+        } else {
+          // Algo más ocurrió al configurar la solicitud
+          console.error('Error inesperado:', error.message)
+        }
+      })
   }
 
   const updateProduct = (updatedProduct, token) => {
@@ -75,7 +86,7 @@ const ProductContextProvider = ({ children }) => {
       .catch(error => console.error('Error updating product:', error))
   }
 
-  function handleRemoveSwal () {
+  function handleRemoveSwal() {
     Swal.fire({
       title: 'Producto eliminado',
       text: 'Por favor continua administrando tus publicaciones.',
