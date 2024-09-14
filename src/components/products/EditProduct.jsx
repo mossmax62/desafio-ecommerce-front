@@ -27,9 +27,9 @@ const EditProduct = ({ productToEdit, onEditComplete }) => {
     const updatedProduct = {
       ...productToEdit,
       name,
-      price,
-      make,
-      model
+      precio: price,
+      modelo: make,
+      marca: model
     }
 
     try {
