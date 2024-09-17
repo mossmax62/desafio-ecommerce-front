@@ -12,8 +12,9 @@ const ProductContextProvider = ({ children }) => {
 
   const navigate = useNavigate()
 
-  const BACKEND_URL = 'https://back-9x5b.onrender.com/'
+  // const BACKEND_URL = 'https://back-9x5b.onrender.com/'
   // const BACKEND_URL = 'http://localhost:3000/'
+  const BACKEND_URL = 'https://fork-ecommerce-back.onrender.com/'
 
   useEffect(() => {
     // Solicitar productos desde el backend
@@ -39,7 +40,7 @@ const ProductContextProvider = ({ children }) => {
     window.localStorage.setItem('products', JSON.stringify(products))
   }, [products])
 
-  function handleAddSwal() {
+  function handleAddSwal () {
     Swal.fire({
       title: 'Nuevo producto agregado',
       text: 'Excelente decisión!',
@@ -86,7 +87,7 @@ const ProductContextProvider = ({ children }) => {
       .catch(error => console.error('Error updating product:', error))
   }
 
-  function handleRemoveSwal() {
+  function handleRemoveSwal () {
     Swal.fire({
       title: 'Producto eliminado',
       text: 'Por favor continua administrando tus publicaciones.',

@@ -6,8 +6,10 @@ import Swal from 'sweetalert2'
 
 const AuthContext = createContext()
 const localStorage = window.localStorage
-const BACKEND_URL = 'https://back-9x5b.onrender.com/'
+
+// const BACKEND_URL = 'https://back-9x5b.onrender.com/'
 // const BACKEND_URL = 'http://localhost:3000/'
+const BACKEND_URL = 'https://fork-ecommerce-back.onrender.com/'
 
 export function AuthProvider ({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
