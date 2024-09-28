@@ -1,0 +1,15 @@
+.edit-product-container .row {
+    background-color: #fffedb;
+}
+
+.edit-product-container li {
+    background-color: #fffedb;
+}
+
+.edit-product-container h1, .edit-product-container h2 {
+    color: #4c4d4a;
+}
+
+.edit-product-container span {
+    color: #149c68;
+}

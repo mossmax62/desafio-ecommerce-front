@@ -3,11 +3,11 @@ import { Carousel } from 'react-bootstrap'
 import CarouselImg1 from '../../assets/img/banner1.png'
 import CarouselImg2 from '../../assets/img/banner2.png'
 import CarouselImg3 from '../../assets/img/banner3.png'
-import './PhotoCarousel.css'
+import './Carousel.css'
 
 const PhotoCarousel = () => {
   return (
-    <div className='container'>
+    <div className='carousel-container'>
       <Carousel className='carousel slide'>
 
         <Carousel.Item>

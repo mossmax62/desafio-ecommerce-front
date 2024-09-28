@@ -3,6 +3,7 @@ import { useProducts } from '../../contexts/ProductContext'
 import { useAuth } from '../../contexts/AuthContext'
 import PropTypes from 'prop-types'
 import Swal from 'sweetalert2'
+import './EditProduct.css'
 
 const EditProduct = ({ productToEdit, onEditComplete }) => {
   const { updateProduct } = useProducts()
@@ -54,27 +55,36 @@ const EditProduct = ({ productToEdit, onEditComplete }) => {
   if (!productToEdit) return null
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Edit Product</h2>
+    <form onSubmit={handleSubmit} className='edit-product-container d-flex flex-column gap-3'>
+      <h2 className='m-0 fs-4 product-list-h1 text-uppercase'>Modifica los detalles del producto</h2>
+      <label for="makerInput" class="form-label m-0">Marca</label>
       <input
         type='text'
-        placeholder='Maker'
+        placeholder='Marca'
         value={make}
         onChange={(e) => setMake(e.target.value)}
+        id='makerInput'
+        className='form-control'
       />
+      <label for="modelInput" class="form-label m-0">Modelo</label>
       <input
         type='text'
-        placeholder='Price'
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-      />
-      <input
-        type='text'
-        placeholder='Model'
+        placeholder='Modelo'
         value={model}
         onChange={(e) => setModel(e.target.value)}
+        id='modelInput'
+        className='form-control'
       />
-      <button type='submit'>Update</button>
+      <label for="priceInput" class="form-label m-0">Precio</label>
+      <input
+        type='text'
+        placeholder='Precio'
+        value={price}
+        onChange={(e) => setPrice(e.target.value)}
+        id='priceInput'
+        className='form-control '
+      />
+      <button type='submit' className='btn btn-success'>Actualizar</button>
     </form>
   )
 }

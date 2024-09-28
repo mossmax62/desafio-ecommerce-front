@@ -8,9 +8,9 @@ const CarDetails = () => {
   const { addToCart } = useCart()
 
   return (
-    <div className='container d-flex vh-100 justify-content-center flex-column'>
+    <div className='container d-flex vh-100 justify-content-center flex-column' style={{ minHeight: '100vh' }}>
       <ProductDetails />
-      <button onClick={() => addToCart(carSelected)} className='btn ms-auto btn btn-danger' style={{ width: '15%' }}>Add to Cart</button>
+      <button onClick={() => addToCart(carSelected)} className='btn ms-auto btn btn-success'>Agregar al carro</button>
     </div>
 
   )

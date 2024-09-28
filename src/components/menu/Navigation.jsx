@@ -46,35 +46,35 @@ const Navigation = () => {
               <SearchBar />
             </div>
             <Nav
-              className='ms-auto'
+              className='ms-auto d-flex align-items-center'
               navbarScroll
             >
-              <Link to='/' className='nav-link btn m-1'>Inicio</Link>
-              <Link to='/favoritos' className='nav-link btn m-1'><FavoriteHeart count={totalFavoritos} /> </Link>
-              <Link to='/shopping-cart' className='nav-link btn m-1'><CartIcon itemCount={totalProductos} /></Link>
+              <Link to='/' className='nav-link btn'>Inicio</Link>
+              <Link to='/favoritos' className='nav-link btn'><FavoriteHeart count={totalFavoritos} /> </Link>
+              <Link to='/shopping-cart' className='nav-link btn'><CartIcon itemCount={totalProductos} /></Link>
 
               {!isAuthenticated
                 ? <NavDropdown title='Acceso' id='basic-nav-dropdown' className='btn m-1 p-1'>
                   <NavDropdown.Item href='#/sign-in' className='nav-link btn btn-warning'>
-                    Sign In
+                    Iniciar sesión
                   </NavDropdown.Item>
                   <NavDropdown.Item href='#/sign-up' className='nav-link btn'>
                     {/* <Link to="/sign-up" className="nav-link btn btn-warning">Sign Up</Link> */}
-                    Sign Up
+                    Registrarse
                   </NavDropdown.Item>
-                  </NavDropdown>
+                </NavDropdown>
                 : <NavDropdown title='Mi cuenta' id='basic-nav-dropdown' className='btn m-1 p-1'>
                   <NavDropdown.Item href='#/user-profile' className='nav-link btn btn-warning'>
-                    Profile
+                    Perfil
                   </NavDropdown.Item>
                   <NavDropdown.Item href='#/manage-products' className='nav-link btn'>
-                    Manage Products
+                    Administrar productos
                   </NavDropdown.Item>
 
                   <NavDropdown.Item onClick={handleLogout} className='nav-link btn'>
-                    Sign Out
+                    Cerrar sesión
                   </NavDropdown.Item>
-                  </NavDropdown>}
+                </NavDropdown>}
               {/* <Link to="/sign-in" className="nav-link btn btn-warning">Sign In</Link>
                         <Link to="/sign-up" className="nav-link btn btn-warning">Sign Up</Link> */}
             </Nav>

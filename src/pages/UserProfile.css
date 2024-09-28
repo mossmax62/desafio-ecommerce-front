@@ -1,0 +1,18 @@
+.user-profile-container .row {
+    background-color: #fffedb;
+}
+
+.user-profile-container h1,
+.user-profile-container h2 {
+    color: #4c4d4a;
+}
+
+.user-profile-container span {
+    color: #149c68;
+}
+
+@media (min-width: 767.98px){
+    .welcome-text-container {
+        display: none;
+    }
+}

@@ -1,0 +1,16 @@
+.favoritos-container svg {
+    width: 1.5em;
+}
+
+.favoritos-container .btn {
+    border-radius: 0 0 5px 5px;
+    margin-top: auto;
+}
+
+.favoritos-container p {
+    color: #fffedb;
+}
+
+.favoritos-container span {
+    color: #aee637;
+}
