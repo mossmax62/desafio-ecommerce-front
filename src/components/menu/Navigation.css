@@ -1,28 +1,32 @@
-.logo {
+.navbar .logo {
     display: flex;
     border-radius: 50%;
 }
 
 nav {
-    background-color: #149c68; /* color2 */
+  background: rgb(20,156,104);
+  background: linear-gradient(180deg, rgba(20,156,104,1) 0%, rgba(56,201,88,1) 100%);
+  color: #383939;
+    /* background-color: #149c68; */ /* color2 */
     padding: 10px;
   }
   
   /* Estilos generales para los enlaces */
-.nav-link {
-    color: #fffedb; /* color5 */
+/* .nav-link {
+    color: #fffedb; color5 */
     /*background-color: #38c958; /* color3 */
     /*padding: 10px 20px;
     border-radius: 5px;*/
-    text-decoration: none;
+    /* text-decoration: none;
     font-weight: bold;
     transition: background-color 0.3s ease;
-  }
+  } */
   
-.nav-link:hover {
+/* .nav-link:hover {
     background-color: #aee637; /* color4 */
+    /* border-radius: 3px;
     color: #fffedb; /* color1 */
-  }
+  /* } */
 
 .btn {
     /*background-color: #aee637; /* color4 */

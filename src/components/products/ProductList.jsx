@@ -31,37 +31,46 @@ const ProductList = () => {
 
   return (
     <>
-      <div>
-        <div className='container'>
-          <div className='product-list'>
-            <div className='row'>
-              {products && products.length > 0 && products.map((product) => (
-                <div key={product.id} className='col-md-3 sm-6 mb-3'>
-                  <div className='card text-center border border-primary rounded p-3'>
-                    <div className='card-title'>
-                      <h3>{product.marca}</h3>
-                      <h2>{product.modelo}</h2>
-                    </div>
-                    <div className='card-body'>
-                      <a href='' onClick={() => handleSeeSelectedCar(event, product.id)}>
-                        <img className='card-img-top img-fluid border border-primary rounded' src={product.img} alt={product.modelo} />
-                      </a>
-                    </div>
-                    <div className='card-text'>
-                      $ {product.precio}
-                    </div>
-                    <div className='like-icon'>
-                      <IconHeart
-                        onClick={() => handleLike(product.id)}
-                        filled={isLiked(product.id)}
-                      />
-                    </div>
-                    &nbsp;
-                    <button onClick={() => handleAddToCart(product)} className='btn btn-primary'>Add to Cart</button>
+      <div className='container product-list-container p-0'>
+        <div className='product-list'>
+          <div className='row row-gap-4 py-3'>
+            {products && products.length > 0 && products.map((product) => (
+              <div key={product.id} className='col-lg-4 col-md-6 col-sm-12'>
+                <div className='card d-flex flex-column'>
+                  <div className='like-icon like-icon-container text-end pe-2 pt-2'>
+                    <IconHeart
+                      onClick={() => handleLike(product.id)}
+                      filled={isLiked(product.id)}
+                    />
                   </div>
+                  <a href='' onClick={() => handleSeeSelectedCar(event, product.id)}>
+                    <div className='card-img-container'>
+                      <div className='img-container'>
+                        <img className='card-img-top' src={product.img} alt={product.modelo} />
+                      </div>
+                    </div>
+                  </a>
+                  <div className='card-body'>
+                    <div className='d-flex flex-column'>
+                      <div className='card-car-info d-flex flex-column text-center'>
+                        <div>
+                          <p className='m-0 fs-5 fw-semibold'>{product.marca}</p>
+                          <p className='m-0 fs-6 text-body-secondary'>{product.modelo}</p>
+                        </div>
+                        <div>
+                          <p className='m-0 fs-6 fw-semibold'>$ {product.precio.toLocaleString('es-ES')}</p>
+                        </div>
+                      </div>
+                      <div className='d-flex justify-content-around'>
+                        <p className='m-0 fs-6 text-body-secondary'>stock: <span className='fw-semibold'>{product.stock}</span></p>
+                        <p className='m-0 fs-6 text-body-secondary'>categoria: <span className='fw-semibold'>{product.categoria}</span></p>
+                      </div>
+                    </div>
+                  </div>
+                  <a onClick={() => handleAddToCart(product)} className='btn btn-success'>Agregar al Carro</a>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

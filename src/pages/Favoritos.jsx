@@ -4,6 +4,7 @@ import { useCart } from '../contexts/CartContext'
 import { useAuth } from '../contexts/AuthContext' // Importamos el contexto de autenticación
 import IconHeart from '../components/fav/IconHeart'
 import '../components/products/ProductList'
+import './Favoritos.css'
 
 const Favoritos = () => {
   const { products, toggleLike, isLiked } = useProducts()
@@ -31,23 +32,23 @@ const Favoritos = () => {
   }
 
   return (
-    <div className='container'>
-      <h1>Favoritos</h1>
+    <div className='container favoritos-container vh-100 d-flex flex-column justify-content-center gap-3'>
+      <h1 className='m-0 fs-1 product-list-h1 text-uppercase'>Favoritos</h1>
       {favoriteProducts.length > 0
-        ? (<div className='product-list'>
-          <div className='row'>
+        ? (<div>
+          <div className='row rounded h-75'>
             {favoriteProducts.map(product => (
-              <div key={product.id} className='col-md-3 sm-6 mb-3'>
+              <div key={product.id} className='col-md-3 col-sm-6'>
                 <div className='card text-center'>
                   <div className='card-title'>
-                    <h3>{product.make}</h3>
-                    <h2>{product.model}</h2>
+                    <h3 className='m-0 fs-5 fw-semibold'>{product.marca}</h3>
+                    <h2 className='m-0 fs-6 text-body-secondary'>{product.modelo}</h2>
                   </div>
                   <div className='card-body'>
-                    <img className='card-img-top' src={product.image} alt={product.model} />
+                    <img className='card-img-top' src={product.img} alt={product.modelo} />
                   </div>
-                  <div className='card-text'>
-                    $ {product.price}
+                  <div className='card-text m-0 fs-6 fw-semibold'>
+                    $ {product.precio.toLocaleString('es-ES')}
                   </div>
                   <div className='like-icon'>
                     <IconHeart
@@ -56,15 +57,15 @@ const Favoritos = () => {
                     />
                   </div>
                   &nbsp;
-                  <button onClick={() => handleAddToCart(product)} className='btn'>Add to Cart</button>
+                  <button onClick={() => handleAddToCart(product)} className='btn btn-success'>Agregar al carro</button>
                 </div>
               </div>
             ))}
           </div>
         </div>)
         : (
-          <p>No hay favoritos</p>
-          )}
+          <p className='m-0 fs-3 product-list-h1 text-uppercase'><span>Aún</span> no hay favoritos seleccionados en tu lista</p>
+        )}
     </div>
   )
 }

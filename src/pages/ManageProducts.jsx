@@ -3,6 +3,7 @@ import ManageProduct from '../components/products/ManageProduct'
 import AddProduct from '../components/products/AddProduct'
 import EditProduct from '../components/products/EditProduct'
 import { Container, Row, Col, Button, Modal } from 'react-bootstrap' // Import Bootstrap components
+import './ManageProducts.css' 
 
 const ManageProductView = () => {
   const [productToEdit, setProductToEdit] = useState(null)
@@ -22,17 +23,17 @@ const ManageProductView = () => {
 
   return (
     <Container className='mt-4'>
-      <h1>Manage Products</h1>
+      <h1 className='m-0 fs-1 product-list-h1 text-uppercase'>Administrar productos</h1>
 
       {/* Add Product Button */}
-      <Button variant='primary' onClick={handleShowAddModal}>
-        Add New Product
+      <Button variant='success' onClick={handleShowAddModal}>
+        Agregar nuevo
       </Button>
 
       {/* Add Product Modal */}
       <Modal show={showAddModal} onHide={handleCloseAddModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Product</Modal.Title>
+          <Modal.Title className='m-0 fs-3 modal-h1 text-uppercase'>Agregar producto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <AddProduct onClose={handleCloseAddModal} /> {/* Pass onClose to AddProduct */}
@@ -50,7 +51,7 @@ const ManageProductView = () => {
       {productToEdit && (
         <Modal show={!!productToEdit} onHide={handleEditComplete}>
           <Modal.Header closeButton>
-            <Modal.Title>Edit Product</Modal.Title>
+            <Modal.Title className='m-0 fs-3 modal-h1 text-uppercase'>Editar Producto</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <EditProduct productToEdit={productToEdit} onEditComplete={handleEditComplete} />

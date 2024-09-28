@@ -1,0 +1,15 @@
+.shopping-cart-container h3, .shopping-cart-container p{
+    color: #fffedb;
+}
+
+.shopping-cart-container .add-btn{
+    border-radius: 0 0 0 0;
+}
+
+.card-title h2, .card-title h3 {
+    color: #4c4d4a;
+}
+
+.shopping-cart-container .remove-btn{
+    border-radius: 0 0 5px 5px;
+}

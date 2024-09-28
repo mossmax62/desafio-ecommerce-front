@@ -1,0 +1,15 @@
+.sign-in-container .row {
+    background-color: #fffedb;
+}
+
+.sign-in-container li {
+    background-color: #fffedb;
+}
+
+.sign-in-container h1, .sign-in-container h2, .sign-in-container label {
+    color: #4c4d4a;
+}
+
+.sign-in-container span {
+    color: #149c68;
+}

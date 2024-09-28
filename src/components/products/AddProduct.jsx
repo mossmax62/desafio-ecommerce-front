@@ -77,8 +77,8 @@ const AddProduct = () => {
   }
 
   return (
-    <div className='container mt-4'>
-      <h2>Add Product</h2>
+    <div className='container mt-4 d-flex flex-column gap-3'>
+      <h2 className='m-0 fs-4 product-list-h1 text-uppercase'>Especifica los datos del producto</h2>
       <form onSubmit={handleSubmit} className='row g-3'>
         {/* Modelo */}
         <div className='col-md-6'>
@@ -147,7 +147,7 @@ const AddProduct = () => {
 
         {/* Imagen */}
         <div className='col-md-12'>
-          <label htmlFor='productImageUrl' className='form-label'>Image URL</label>
+          <label htmlFor='productImageUrl' className='form-label'>Imagen URL</label>
           <input
             type='text'
             className={`form-control ${errors.img ? 'is-invalid' : ''}`}
@@ -176,7 +176,7 @@ const AddProduct = () => {
         </div>
 
         {/* Favorito */}
-        <div className='col-md-12'>
+        <div className='col-md-12 d-flex align-items-center gap-1'>
           <label className='form-label'>Favorito</label>
           <input
             type='checkbox'
@@ -186,7 +186,7 @@ const AddProduct = () => {
         </div>
 
         <div className='col-12'>
-          <button type='submit' className='btn btn-primary'>Add Product</button>
+          <button type='submit' className='btn btn-success w-100'>Agregar</button>
         </div>
       </form>
     </div>

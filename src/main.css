@@ -1,15 +1,43 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
-body {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
     margin: 0;
-    padding: 10;
-    overflow: auto;
-    background-color: #383939;
-    background-image: url(./assets/img/background.png);
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+  }
+
+body {
+    min-height: 100%;
+    margin: 0;
+    /* overflow: auto; */
+    background-color: #4c4d4a;
+    /* background-image: url(./assets/img/background.png); */
     color: #fffedb;
-    height: 100vh;
-    font-family: "Roboto", sans-serif;
+    font-family: 'system-ui', sans-serif;
     font-weight: 400;
-    font-style: normal;
+}
+
+#root {
+    min-height: 100%;
+}
+
+h1, h2 {
+    color: #fffedb;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h2 span {
+    color: #aee637;
+}
+
+.product-list-container,
+.carousel-container {
+    margin: 3em 0;
 }
 
 .notFound {
@@ -18,91 +46,3 @@ body {
     justify-content: center;
     align-items: center;
 }
-
-/* .rain-container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-}
-
-.raindrop {
-    position: absolute;
-    bottom: 100%;
-    width: 2px;
-    height: 20px;
-    background: rgba(43, 76, 126, 1);
-    animation: fall linear infinite;
-}
-
-.raindrop:nth-child(even) {
-    animation-delay: 0.2s;
-}
-
-.raindrop:nth-child(odd) {
-    animation-delay: 0.4s;
-}
-
-.raindrop:nth-child(3n) {
-    animation-delay: 0.6s;
-}
-
-.raindrop:nth-child(4n) {
-    animation-delay: 0.8s;
-}
-
-.raindrop:nth-child(5n) {
-    animation-delay: 1s;
-}
-
-.raindrop:nth-child(6n) {
-    animation-delay: 1.2s;
-}
-
-.raindrop:nth-child(7n) {
-    animation-delay: 1.4s;
-}
-
-.raindrop:nth-child(8n) {
-    animation-delay: 1.6s;
-}
-
-.raindrop:nth-child(9n) {
-    animation-delay: 1.8s;
-}
-
-.raindrop:nth-child(10n) {
-    animation-delay: 2s;
-}
-
-.raindrop:nth-child(11n) {
-    animation-delay: 2.2s;
-}
-
-.raindrop:nth-child(12n) {
-    animation-delay: 2.4s;
-}
-
-.raindrop:nth-child(13n) {
-    animation-delay: 2.6s;
-}
-
-.raindrop:nth-child(14n) {
-    animation-delay: 2.8s;
-}
-
-.raindrop:nth-child(15n) {
-    animation-delay: 3s;
-}
-
-.raindrop:nth-child(16n) {
-    animation-delay: 3.2s;
-}
-
-
-@keyframes fall {
-    to {
-        transform: translateY(100vh);
-    }
-}
-
- */

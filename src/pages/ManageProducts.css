@@ -1,0 +1,7 @@
+.modal-content {
+    background-color: #4c4d4a;;
+}
+
+.modal-content h1, .modal-content h2, .modal-content h3, .modal-h1, label, input {
+    color: #fffedb;
+}

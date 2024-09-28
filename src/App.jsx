@@ -14,7 +14,7 @@ import CarDetails from './pages/CarDetails'
 import Footer from './components/footer/Footer'
 import NotFound from './pages/NotFound'
 
-function App () {
+function App() {
   return (
     <div>
       <Navigation />

@@ -1,0 +1,15 @@
+.sign-up-container .row {
+    background-color: #fffedb;
+}
+
+.sign-up-container li {
+    background-color: #fffedb;
+}
+
+.sign-up-container h1, .sign-up-container h2, .sign-up-container label {
+    color: #4c4d4a;
+}
+
+.sign-up-container span {
+    color: #149c68;
+}
