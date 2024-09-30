@@ -35,7 +35,7 @@ const SingUp = () => {
     <>
       <div className='container sign-up-container vh-100 d-flex justify-content-center align-items-center'>
         {exito && <p>Signed Up!!!</p>}
-        <div className='row rounded h-75'>
+        <div className='row rounded h-75 w-100'>
           <div className='col-md-6 col-sm-12 border-end border-secondary'>
             <div className='d-flex flex-column justify-content-center align-items-center h-100'>
               <h1 className='m-0 fs-1 product-list-h1 text-uppercase'>Registrate</h1>
@@ -80,7 +80,7 @@ const SingUp = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                <button type='submit' className='btn btn-success m-0 w-100'>Registrarse</button>
+                <button type='submit' className='btn btn-success m-0 w-100'><i className='bi bi-person-plus-fill' /> Registrarse</button>
               </form>
               {error && <p>{error}</p>}
             </div>

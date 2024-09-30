@@ -1,5 +1,14 @@
+.favoritos-container {
+    overflow: auto;
+}
+
 .favoritos-container svg {
     width: 1.5em;
+}
+
+.favoritos-container .card-body {
+    height: 200px;
+    overflow: hidden;
 }
 
 .favoritos-container .btn {
@@ -13,4 +22,11 @@
 
 .favoritos-container span {
     color: #aee637;
+}
+
+@media (min-width: 576px) {
+    .favoritos-container {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
 }

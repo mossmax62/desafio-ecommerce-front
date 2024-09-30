@@ -1,23 +1,25 @@
 .manage-product-container {
-    padding: 20px;
-    overflow: auto;
-    height: 70vh;
-  }
-  
-  
-  
-  .card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .card-title {
-    font-weight: bold;
-  }
-  
-  .btn-group {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  
+  padding: 20px;
+  overflow: auto;
+  height: 70vh;
+}
+
+.manage-product-container .card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.manage-product-container .card-img-container {
+  min-height: 200px;
+  overflow: hidden;
+}
+
+.manage-product-container .card-title {
+  font-weight: bold;
+}
+
+.manage-product-container .btn-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

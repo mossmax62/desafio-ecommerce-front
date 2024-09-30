@@ -10,7 +10,7 @@ const CarDetails = () => {
   return (
     <div className='container d-flex vh-100 justify-content-center flex-column' style={{ minHeight: '100vh' }}>
       <ProductDetails />
-      <button onClick={() => addToCart(carSelected)} className='btn ms-auto btn btn-success'>Agregar al carro</button>
+      <button onClick={() => addToCart(carSelected)} className='btn ms-auto btn btn-success'><i className='bi bi-cart-fill' /> Agregar al carro</button>
     </div>
 
   )

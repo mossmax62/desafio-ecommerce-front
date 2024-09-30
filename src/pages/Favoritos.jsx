@@ -32,13 +32,13 @@ const Favoritos = () => {
   }
 
   return (
-    <div className='container favoritos-container vh-100 d-flex flex-column justify-content-center gap-3'>
+    <div className='container favoritos-container min-vh-100 d-flex flex-column justify-content-center'>
       <h1 className='m-0 fs-1 product-list-h1 text-uppercase'>Favoritos</h1>
       {favoriteProducts.length > 0
         ? (<div>
-          <div className='row rounded h-75'>
+          <div className='row rounded h-75 w-100r'>
             {favoriteProducts.map(product => (
-              <div key={product.id} className='col-md-3 col-sm-6'>
+              <div key={product.id} className='col-lg-3 col-md-6 p-2 g-col-6'>
                 <div className='card text-center'>
                   <div className='card-title'>
                     <h3 className='m-0 fs-5 fw-semibold'>{product.marca}</h3>
@@ -57,7 +57,7 @@ const Favoritos = () => {
                     />
                   </div>
                   &nbsp;
-                  <button onClick={() => handleAddToCart(product)} className='btn btn-success'>Agregar al carro</button>
+                  <button onClick={() => handleAddToCart(product)} className='btn btn-success'><i className='bi bi-cart-fill' /> Agregar al carro</button>
                 </div>
               </div>
             ))}

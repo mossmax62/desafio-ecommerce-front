@@ -3,7 +3,7 @@ import ManageProduct from '../components/products/ManageProduct'
 import AddProduct from '../components/products/AddProduct'
 import EditProduct from '../components/products/EditProduct'
 import { Container, Row, Col, Button, Modal } from 'react-bootstrap' // Import Bootstrap components
-import './ManageProducts.css' 
+import './ManageProducts.css'
 
 const ManageProductView = () => {
   const [productToEdit, setProductToEdit] = useState(null)
@@ -27,6 +27,7 @@ const ManageProductView = () => {
 
       {/* Add Product Button */}
       <Button variant='success' onClick={handleShowAddModal}>
+        <i className='bi bi-cart-plus-fill me-1' />
         Agregar nuevo
       </Button>
 
