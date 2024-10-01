@@ -15,26 +15,25 @@ const EditProduct = ({ productToEdit, onEditComplete }) => {
 
   useEffect(() => {
     if (productToEdit) {
-      setName(productToEdit.name)
-      setPrice(productToEdit.price)
-      setMake(productToEdit.make)
-      setModel(productToEdit.model)
+      setName(productToEdit.name || '')
+      setPrice(productToEdit.price || '')
+      setMake(productToEdit.make || '')
+      setModel(productToEdit.model || '')
     }
   }, [productToEdit])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const updatedProduct = {
-      ...productToEdit,
-      name,
-      precio: price,
-      modelo: make,
-      marca: model
-    }
+    const updatedProduct = {}
+
+    if (name && name !== productToEdit.name) updatedProduct.name = name
+    if (price && price !== productToEdit.price) updatedProduct.precio = price
+    if (make && make !== productToEdit.make) updatedProduct.marca = make
+    if (model && model !== productToEdit.model) updatedProduct.modelo = model
 
     try {
-      await updateProduct(updatedProduct, token)
+      await updateProduct({ ...productToEdit, ...updatedProduct }, token)
       Swal.fire({
         title: 'Producto actualizado',
         text: 'El producto se ha actualizado correctamente.',
