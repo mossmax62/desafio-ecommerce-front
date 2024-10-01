@@ -13,3 +13,10 @@
 .shopping-cart-container .remove-btn{
     border-radius: 0 0 5px 5px;
 }
+
+@media (min-width: 576px) {
+    .shopping-cart-container {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+}

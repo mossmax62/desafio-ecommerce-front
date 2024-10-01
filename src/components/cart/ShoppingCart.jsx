@@ -5,7 +5,7 @@ import './ShoppingCart.css'
 const ShoppingCart = () => {
   const { cart, clearCart, addToCart, removeFromCart, buyCart } = useCart()
   return (
-    <div className='container shopping-cart-container vh-100 d-flex flex-column justify-content-center'>
+    <div className='container min-vh-100 shopping-cart-container d-flex flex-column justify-content-center'>
       <div className='d-flex flex-column justify-content-center'>
         <h1 className='m-0 fs-1 product-list-h1 text-uppercase'>Carro de compras</h1>
         <div className='container product-list'>
@@ -26,8 +26,8 @@ const ShoppingCart = () => {
                   $ {product.precio * product.quantity}
                 </div>
                 <div>
-                  <button onClick={() => addToCart(product)} className='btn btn-primary add-btn w-100'>Agregar más</button>
-                  <button onClick={() => removeFromCart(product.id)} className='btn btn-danger remove-btn w-100'>Remover</button>
+                  <button onClick={() => addToCart(product)} className='btn btn-primary add-btn w-100'><i className='bi bi-cart-plus-fill' /> Agregar más</button>
+                  <button onClick={() => removeFromCart(product.id)} className='btn btn-danger remove-btn w-100'><i className='bi bi-trash-fill' /> Remover</button>
                 </div>
               </div>
 
@@ -39,8 +39,8 @@ const ShoppingCart = () => {
             <p className='m-0 fw-bold fs-5 product-list-h1 text-uppercase'>{cart.reduce((total, product) => total + product.quantity, 0)}</p>
             <h3 className='m-0 fs-5 product-list-h1 text-uppercase'>Total del carro:</h3>
             <p className='m-0 fw-bold fs-5 product-list-h1 text-uppercase'>$ {cart.reduce((total, product) => total + product.precio * product.quantity, 0)}</p>
-            <button onClick={clearCart} className='btn btn-danger w-25'>Vaciar carro</button>
-            <button onClick={buyCart} className='btn btn-success w-25'>Procesar la compra</button>
+            <button onClick={clearCart} className='btn btn-danger w-25'><i className='bi bi-cart-x-fill' /> Vaciar carro</button>
+            <button onClick={buyCart} className='btn btn-success w-25'><i className='bi bi-credit-card-2-back-fill' /> Procesar la compra</button>
           </div>
         </div>
       </div>

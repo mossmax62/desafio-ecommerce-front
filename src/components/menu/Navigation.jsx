@@ -56,22 +56,27 @@ const Navigation = () => {
               {!isAuthenticated
                 ? <NavDropdown title='Acceso' id='basic-nav-dropdown' className='btn m-1 p-1'>
                   <NavDropdown.Item href='#/sign-in' className='nav-link btn btn-warning'>
+                  <i className='bi bi-box-arrow-in-right me-1' />
                     Iniciar sesión
                   </NavDropdown.Item>
                   <NavDropdown.Item href='#/sign-up' className='nav-link btn'>
                     {/* <Link to="/sign-up" className="nav-link btn btn-warning">Sign Up</Link> */}
+                    <i className='bi bi-person-plus-fill me-1' />
                     Registrarse
                   </NavDropdown.Item>
                 </NavDropdown>
                 : <NavDropdown title='Mi cuenta' id='basic-nav-dropdown' className='btn m-1 p-1'>
                   <NavDropdown.Item href='#/user-profile' className='nav-link btn btn-warning'>
+                    <i className='bi bi-person-fill me-1' />
                     Perfil
                   </NavDropdown.Item>
                   <NavDropdown.Item href='#/manage-products' className='nav-link btn'>
+                    <i className='bi bi-car-front-fill bi bi-person-fill me-1' />
                     Administrar productos
                   </NavDropdown.Item>
 
                   <NavDropdown.Item onClick={handleLogout} className='nav-link btn'>
+                    <i className='bi bi-box-arrow-left me-1' />
                     Cerrar sesión
                   </NavDropdown.Item>
                 </NavDropdown>}

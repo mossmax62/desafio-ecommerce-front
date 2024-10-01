@@ -67,7 +67,7 @@ const ProductList = () => {
                       </div>
                     </div>
                   </div>
-                  <a onClick={() => handleAddToCart(product)} className='btn btn-success'>Agregar al Carro</a>
+                  <a onClick={() => handleAddToCart(product)} className='btn btn-success'><i className='bi bi-cart-fill' /> Agregar al Carro</a>
                 </div>
               </div>
             ))}
